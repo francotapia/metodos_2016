@@ -10,7 +10,23 @@ package Modelos;
  * @author Maribel
  */
 public class Escenario {
-    int Ancho;
-    int Largo;
+    private int Ancho;
+    private int Largo;
+    private int[][] coordenada;
+    private Casilla casilla;
+    private TipoDeEscenario tipoEscenario;
+    private TipoDeCasilla tipoCasilla;
+    
+    
+     public int[][] mostrarCoordenadas() {
+        coordenada = new int[25][25];
+        for(int i=0; i<25;i++){
+            for(int j=0; j<25;j++){
+                coordenada = new int[i][j];
+            }
+            
+        }
+        return coordenada;
+    }
     
 }

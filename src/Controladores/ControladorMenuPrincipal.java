@@ -17,6 +17,7 @@ import javax.swing.JButton;
 public class ControladorMenuPrincipal implements ActionListener {
     
    VistaMenuPrincipal vMenuP;
+   ControladorBiblioteca cBiblio;
     
     public ControladorMenuPrincipal(){
         vMenuP = new VistaMenuPrincipal();
@@ -28,11 +29,11 @@ public class ControladorMenuPrincipal implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if(vMenuP.getBotonBatalla() == (JButton)ae.getSource()){
             ControladorBatalla cB = new ControladorBatalla();
-            vMenuP.dispose();
+            vMenuP.setVisible(false);
         }            
        if(vMenuP.getBotonBiblioteca() == (JButton)ae.getSource()){
             ControladorBiblioteca cBiblio = new ControladorBiblioteca();
-            vMenuP.dispose();
+            vMenuP.setVisible(false);
         }
         
     }

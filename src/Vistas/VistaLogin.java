@@ -7,6 +7,7 @@ package Vistas;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,8 +34,8 @@ public class VistaLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         usuarioLogin = new javax.swing.JLabel();
         contraseñaLogin = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        nombre = new javax.swing.JTextField();
+        contraseña = new javax.swing.JPasswordField();
         ingresar = new javax.swing.JButton();
         registrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -74,8 +75,8 @@ public class VistaLogin extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(registrar))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))))
+                                .addComponent(nombre)
+                                .addComponent(contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -89,10 +90,10 @@ public class VistaLogin extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usuarioLogin)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(contraseñaLogin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -131,34 +132,47 @@ public class VistaLogin extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField contraseña;
     private javax.swing.JLabel contraseñaLogin;
     private javax.swing.JButton ingresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField nombre;
     private javax.swing.JButton registrar;
     private javax.swing.JLabel usuarioLogin;
     // End of variables declaration//GEN-END:variables
 
 // Inicio de get (para obtener cositas delas vistas)
- public String getNombreUsuario(){                 //obtengo nombre de usuario
-    return usuarioLogin.getText();
-}
-public String getContraseñaUsuario(){              //obtengo nombre de contraseña
-    return contraseñaLogin.getText();
-}
-public JButton getRegistrar(){                 //obtengo el OK del boton
-    return registrar;
-}
-public JButton getIngresar(){                 //obtengo el OK del boton
-    return ingresar;
-}
+    public String getNombreUsuario(){                 //obtengo nombre de usuario
+        return nombre.getText();
+    }
+    public String getContraseñaUsuario(){              //obtengo nombre de contraseña
+        return contraseña.getText();
+    }
+    public JButton getRegistrar(){                 //obtengo el OK del boton
+        return registrar;
+    }
+    public JButton getIngresar(){                 //obtengo el OK del boton
+        return ingresar;
+    }   
 
+    public void mostrarVentanaContraseña(){
+        JOptionPane.showMessageDialog(null, "Contraseña incorrecta."
+        + " Ingresa nuevamente tu usuario y  contraseña",   "Error en el ingreso",
+        JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void mostrarVentanaUsuario(){
+        JOptionPane.showMessageDialog(null, "Usuario incorrecto."
+        + " Ingresa nuevamente tu usuario y  contraseña",   "Error en el ingreso",
+        JOptionPane.INFORMATION_MESSAGE);
+    }
 //Listener del programa para botones: registrar e ingresar
-public void agregarListener(ActionListener al){
-    this.ingresar.addActionListener(al);  //espera a esuchar una acción del usuario
-    this.registrar.addActionListener(al); //espera a esuchar una acción del usuario
+    public void agregarListener(ActionListener al){
+        this.ingresar.addActionListener(al);  //espera a esuchar una acción del usuario
+        this.registrar.addActionListener(al); //espera a esuchar una acción del usuario
+        this.nombre.addActionListener(al);
+        this.contraseña.addActionListener(al);
 
 
 

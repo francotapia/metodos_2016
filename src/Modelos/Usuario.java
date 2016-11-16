@@ -16,9 +16,9 @@ import java.util.*;
 
 public class Usuario extends Jugador {
  
-   private String nombre;
+   private String nombre = "franco";
 
-   private String contraseña;
+   private String contraseña = "franco";
 
    private String equipo;
 
@@ -35,14 +35,18 @@ public class Usuario extends Jugador {
    }
    
   
-   public Boolean verificarNombreBd() {
-
-      return null;
+   public boolean verificarNombreBd(String nombre) {
+       if(this.nombre.equals(nombre)){
+           return true;
+       }
+      return false;
    }
    
-   public Boolean verificarContrasenaBd() {
-   
-      return null;
+   public boolean verificarContrasenaBd(String contraseña) {
+       if(this.contraseña.equals(contraseña)){
+         return true;  
+       }
+   return false; 
    }
    
    public Personaje contratarPersonaje(String personaje, int dinero) {

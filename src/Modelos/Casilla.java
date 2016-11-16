@@ -22,6 +22,15 @@ public class Casilla {
     private int coordenadaY;
     private TipoDeCasilla tipoCasilla;
 
+    
+   public Casilla(int altura,int coordenadaX, int coordenadaY,TipoDeCasilla casilla){
+       this.altura = altura;
+       this.coordenadaX = coordenadaX;
+       this.coordenadaY = coordenadaY;
+       this.tipoCasilla = casilla;
+   }
+    //Métodos get y set
+    
     public int[][] getCoordenada(){
         return coordenada;
     }
@@ -44,17 +53,22 @@ public class Casilla {
     }
    
    
-   
+    //Metodos de la clase
+    
     public int[][] mostrarCoordenadas() {
         coordenada = new int[25][25];
         for(int i=0; i<25;i++){
             for(int j=0; j<25;j++){
                 coordenada = new int[i][j];
-                
+              
             }
             
         }
         return coordenada;
+    }
+    
+    public int  crearAltura(){
+       return 1;
     }
    
    //Verifica si la posicion esta vacia (true) o no (false).

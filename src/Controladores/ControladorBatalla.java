@@ -22,8 +22,8 @@ public class ControladorBatalla implements ActionListener {
     private VistaBatalla vb;
     
     ControladorBatalla() {
-         vb = new VistaBatalla();
-         vb.agregarListener(this);
+        vb = new VistaBatalla();
+        vb.agregarListener(this);
         vb.setVisible(true);
     }
     
@@ -31,6 +31,11 @@ public class ControladorBatalla implements ActionListener {
      
     public void actionPerformed(ActionEvent ae) {
         
+        if(vb.getVolver() == (JButton)ae.getSource()){
+            ControladorMenuPrincipal cm = new ControladorMenuPrincipal();
+            vb.setVisible(false);
+          
+        }
         for(int i = 0; i<25; i++){
             for(int j=0; j<25; j++){
                 if(vb.getCasillas()[i][j]==(JButton)ae.getSource()){

@@ -42,10 +42,21 @@ public class ControladorLogin  implements ActionListener{ //implementando interf
         
         //Condición que verifica si el usuario se ha logeado
         if(vLog.getIngresar() == (JButton)ae.getSource()){
-            ActividadUsuario.actividadUsuario("Usuario se logea");
-            cMenuP = new ControladorMenuPrincipal();
-            vLog.dispose();
-             }
+            if(usuario.verificarNombreBd(vLog.getNombreUsuario())){
+                if(usuario.verificarContrasenaBd(vLog.getContraseñaUsuario())){
+                    ActividadUsuario.actividadUsuario("Usuario se logea");
+                    cMenuP = new ControladorMenuPrincipal();
+                    vLog.dispose();
+                }
+                else{
+                    vLog.mostrarVentanaContraseña();
+                }
+            }
+            else{
+               vLog.mostrarVentanaUsuario();
+            }
+       }
+            
+                
     }
- 
 }

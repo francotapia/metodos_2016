@@ -17,10 +17,46 @@ import java.util.*;
 public class TipoDeCasilla {
 
    private int coordenadaFinal;
+   private int tierra;
+   private int monataña;
+   private int rio;
+   private int bosque;
+   private int[] altura;
+    
    
+  public int[] rangoAlturaTierra(){
+      altura = new int[5];
+      for(int i = 0; i<5; i++){
+          altura[i] = i;
+      }
+      return altura;
+  }
+   public int[] rangoAlturaMontaña(){
+      altura = new int[5];
+      for(int i = 0; i<5; i++){
+          altura[i] = i;
+      }
+      return altura;
+  }
+   public int[] rangoAlturaRio(){
+      altura = new int[10];
+      for(int i = 0; i<10; i++){
+          altura[i] = i;
+      }
+      return altura;
+   }
+   public int[] rangoAlturaBosque(){
+      altura = new int[10];
+      for(int i = 0; i<10; i++){
+          altura[i] = i;
+      }
+      return altura;
+   }
+  
+  
 
    public Boolean determinarTerreno(Casilla casillas) {
-
+     
       return null;
    }
 }

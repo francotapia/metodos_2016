@@ -31,7 +31,7 @@ public class ControladorBiblioteca implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         
         if(vBiblio.getAtras()== (JButton)ae.getSource()){
-            ControladorBiblioteca cBiblio = new ControladorBiblioteca();
+            ControladorMenuPrincipal cBiblio = new ControladorMenuPrincipal();
             vBiblio.dispose();
         }
          if(vBiblio.getIniciarAdivina()== (JButton)ae.getSource()){
