@@ -15,16 +15,21 @@ import java.util.*;
 
 /** @pdOid f9b0b4a4-39d7-4807-8436-508c8faaab7f */
 public class Batalla {
-   /** @pdOid 486a58ea-79e4-41f6-9151-1a231a88e790 */
-   private ArrayList<Personaje> personajesVivos;
+
+    private Personaje[] personajesVivos;
+    private Escenario escenario;
+    private java.util.Collection<Jugador> jugador;
+    private Personaje[] personajesInicial;
    
-   /** @pdRoleInfo migr=no name=Escenario assc=association1 mult=1..1 */
-   public Escenario escenario;
-   /** @pdRoleInfo migr=no name=Jugador assc=association2 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
-   public java.util.Collection<Jugador> jugador;
    
-   /** @param puntoInicio
-    * @pdOid 23704036-8dda-4369-b3d8-3d0bdfd55120 */
+
+   public Batalla(){
+       escenario = new Escenario();
+
+   }
+   
+   
+   /** @param puntoInicio */
    public int calcularDistanciaAtaque(int puntoInicio) {
       // TODO: implement
       return 0;
@@ -93,7 +98,7 @@ public class Batalla {
    /** @param movmoentoMaquina 
     * @param nivelMaquina 
     * @param nivelUsuario
-    * @pdOid 19bfe872-55ef-4c3d-8ff7-be8f1d6af97e */
+  */
    public Boolean generarAtaquesVisibles(int movmoentoMaquina, int nivelMaquina, int nivelUsuario) {
       // TODO: implement
       return null;

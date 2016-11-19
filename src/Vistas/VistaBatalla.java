@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import static javafx.scene.paint.Color.color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 /**
@@ -45,7 +46,35 @@ public class VistaBatalla extends javax.swing.JFrame {
         }
         return casillas;
     }
+    
+     public JPanel getjPanel1() {
+        return jPanel1;
+    }
+    
+    public JButton getAtaqueC() {
+        return ataqueC;
+    }
 
+    public JButton getAtaqueL() {
+        return ataqueL;
+    }
+
+    public JButton getAtaqueM() {
+        return ataqueM;
+    }
+
+    public JButton getMover() {
+        return mover;
+    }
+
+    public JButton getPasar() {
+        return pasar;
+    }
+
+    public JButton getUsarObjeto() {
+        return usarObjeto;
+    }
+   
     public JButton[][] getCasillas(){
         return this.casillas;
     }
@@ -65,29 +94,29 @@ public class VistaBatalla extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        mover = new javax.swing.JButton();
+        ataqueC = new javax.swing.JButton();
+        ataqueL = new javax.swing.JButton();
+        ataqueM = new javax.swing.JButton();
+        usarObjeto = new javax.swing.JButton();
+        pasar = new javax.swing.JButton();
         volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton1.setText("Mover");
+        mover.setText("Mover");
 
-        jButton2.setText("Ataque corta distancia");
+        ataqueC.setText("Ataque corta distancia");
 
-        jButton3.setText("Ataque larga distancia");
+        ataqueL.setText("Ataque larga distancia");
 
-        jButton4.setText("Ataque mágico");
+        ataqueM.setText("Ataque mágico");
 
-        jButton5.setText("Utilizar objeto");
+        usarObjeto.setText("Utilizar objeto");
 
-        jButton6.setText("Pasar turno");
+        pasar.setText("Pasar turno");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,29 +125,29 @@ public class VistaBatalla extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ataqueC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ataqueL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ataqueM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usarObjeto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pasar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(mover)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(ataqueC)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(ataqueL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(ataqueM)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(usarObjeto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(pasar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -155,23 +184,44 @@ public class VistaBatalla extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   
+    public void activarTablero(){
+        for (int x = 0;x < 25; x++){
+            for (int y = 0;y < 25; y++){
+                casillas[x][y].setEnabled(true);  
+            }
+        }
+    }
+    public void desactivarTablero(){
+         for (int x = 0;x < 25; x++){
+            for (int y = 0;y < 25; y++){
+                casillas[x][y].setEnabled(false);  
+            }
+        }
+    }
    
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton ataqueC;
+    private javax.swing.JButton ataqueL;
+    private javax.swing.JButton ataqueM;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton mover;
+    private javax.swing.JButton pasar;
+    private javax.swing.JButton usarObjeto;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 
 public void agregarListener(ActionListener f){
+  
+    mover.addActionListener(f);
+    ataqueC.addActionListener(f);
+    ataqueL.addActionListener(f);
+    ataqueM.addActionListener(f);
+    usarObjeto.addActionListener(f);
+    pasar.addActionListener(f);
     volver.addActionListener(f);
     for (int i=0;i<25;i++) { //por cada fila del tablero
             for (int j=0;j<25;j++) { //por cada elemento de cada fila

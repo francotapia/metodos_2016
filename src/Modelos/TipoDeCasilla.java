@@ -55,9 +55,9 @@ public class TipoDeCasilla {
   
   
 
-   public Boolean determinarTerreno(Casilla casillas) {
+   public boolean determinarTerreno(Casilla casillas,int i) {
      
-      return null;
+      return false;
    }
 }
 

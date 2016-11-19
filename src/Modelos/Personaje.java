@@ -15,7 +15,9 @@ import java.util.*;
 
 /** @pdOid d9f2219b-a6c8-4650-b6f8-08525e692b3a */
 public class Personaje {
- 
+    
+   private int[][] listaPersonaje;
+   private int[][] disponibilidadPosicion;
    private int puntosVida;
    private int puntosMagia;
    private int puntosAtaqueCortos;
@@ -35,8 +37,18 @@ public class Personaje {
    private int[] stockAtaqueBajo;
    private int[] stockAtaqueMedio;
    private int[] stockAtaqueEspecial;
+   private int posicionX;
+   private int posicionY;
+   private Escenario escenario;
    
+   public Personaje(){
+    escenario = new Escenario();
+   }
    
+
+    
+    
+ 
    
    
    public Boolean almacenarPersonajeBd() {
@@ -47,10 +59,20 @@ public class Personaje {
 
   //Este metodo unicamente cambia la posicion del personaje a la posicion final, no verifica.
   //Hay que terminar de pensar bien la recursion. 
-   public int[][] moverPersonaje(int puntosMovimiento, int[][] puntoInicio, int[][] puntoObjetivo) {
-      int contador = puntosMovimiento;
+   
+   public boolean moverPersonaje(int puntosMovimiento, int x,int y) {
+      if(puntosMovimiento > 0){
+          this.puntoMovimiento-=1;
+          escenario.getDisponibilidadPosicion()[x][y] = 1;
+          escenario.getDisponibilidadPosicion()[posicionX][posicionY] = 0;
+          return false;
+      }
+      else if(puntosMovimiento <= 0){
+          return true;
+      }
     
-      return null;
+    
+      return true;
    }
    
    
@@ -62,31 +84,29 @@ public class Personaje {
        }
        return true;
    }
-   /** @param objeto
-    * @pdOid 21087316-493a-48ae-bb01-aab28ffd3016 */
+
    public Boolean equiparObjeto(Objeto objeto) {
-      // TODO: implement
+
       return null;
    }
    
-   /** @param objetoEquipado
-    * @pdOid 751a23f4-f79a-48e9-8abf-38d29840e8fe */
+
    public Boolean quitarObjeto(String objetoEquipado) {
-      // TODO: implement
+
       return null;
    }
    
    /** @param ataqueAtacante 
     * @param defensaDefensor 
     * @param vidaDefensor
-    * @pdOid 9a236967-06c9-4646-891b-33502775de81 */
+ */
    public int calcularDanoRecibido(int ataqueAtacante, int defensaDefensor, int vidaDefensor) {
-      // TODO: implement
+ 
       return 0;
    }
    
    /** @param personajeObjetivo
-    * @pdOid 29db8cd3-b20b-494f-88ec-6a45934135eb */
+  */
    public Boolean seleccionarObjetivoAtaque(String personajeObjetivo) {
       // TODO: implement
       return null;
@@ -94,23 +114,32 @@ public class Personaje {
    
    /** @param traicionActual 
     * @param tipo
-    * @pdOid 9504eb66-42b5-485d-b807-890d53d5231c */
+ */
    public Boolean verificarTraicion(int traicionActual, Tipo tipo) {
       // TODO: implement
       return null;
    }
    
    /** @param dano
-    * @pdOid 85ff5424-ded1-492d-886b-8558a59e5152 */
+*/
    public Boolean generarDano(int dano) {
       // TODO: implement
       return null;
    }
 
 
-//Entrega el arreglo de coordenadas.
+//Método que entrega una matriz con las casillas ocupadas
     public int[][] obtenerPosicion() {
-        return posicion;
+        listaPersonaje = new int[25][25];
+        disponibilidadPosicion = new int[25][25];
+        for(int i =0; i<25;i++){
+            for(int j= 0;j<25; j++){
+            if(listaPersonaje[i][j] != 0){
+                disponibilidadPosicion[i][j] = 1; //se indica esa posicion se encuentra ocupada
+                }
+            }
+        }
+        return disponibilidadPosicion;
     }
     //Un simple set.
     public void setPosicion(int[][] posicion) {
@@ -142,20 +171,8 @@ public class Personaje {
     }
 
 //////////////agregar en casilla////////////////////////////////
-    public Boolean movimientoCasilla(int i, int j) { //metodo que comprueba si el movimiento realizado corresponde a una distacia de casilla
-        int coordenadaX = 0;
-     	int filaA = Math.abs(i - coordenadaX);
-       int coordenadaY = 0;
-     	int columnaA = Math.abs(j - coordenadaY);
-     
-     	if (filaA == 1){ //verificar si se ha movido una casilla
-        	 return true;
-     	}
-    	 else if (columnaA == 1){ //verificar si se ha movido una casilla
-         return true;
-     	}
-      	return false;
-   }
+    
+
     //¡ESTO ES ESPECIFICAMENTE PARA EL ATAQUE, NO TIENE QUE VER CON EL MOVIMIENTO.
     public boolean validarPosicion(ArrayList<Integer> posicionSeleccionada, ArrayList<Integer> posicionPersonajeA, int rango){
         Integer xSeleccionado= posicionSeleccionada.get(0);

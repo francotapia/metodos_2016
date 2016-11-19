@@ -15,21 +15,33 @@ import java.util.ArrayList;
 
 public class Casilla {
 
+
    
     private int altura;
     private int[][] coordenada;
     private int coordenadaX;
     private int coordenadaY;
     private TipoDeCasilla tipoCasilla;
+    private Personaje personajePosicionado;
 
     
-   public Casilla(int altura,int coordenadaX, int coordenadaY,TipoDeCasilla casilla){
+   public Casilla(int coordenadaX, int coordenadaY,int altura){
        this.altura = altura;
        this.coordenadaX = coordenadaX;
        this.coordenadaY = coordenadaY;
-       this.tipoCasilla = casilla;
+       
+       
+       //this.tipoCasilla = casilla;
    }
     //Métodos get y set
+
+    public Casilla() {
+        
+    }
+    
+
+   
+
     
     public int[][] getCoordenada(){
         return coordenada;
@@ -53,40 +65,34 @@ public class Casilla {
     }
    
    
-    //Metodos de la clase
-    
-    public int[][] mostrarCoordenadas() {
-        coordenada = new int[25][25];
-        for(int i=0; i<25;i++){
-            for(int j=0; j<25;j++){
-                coordenada = new int[i][j];
-              
-            }
-            
-        }
-        return coordenada;
-    }
+     /**
+     * Metodo que entrega una matriz de enteros, donde cada posicion es 0
+     * @return int[][] Retorna una lista de listas de enteros.
+     */
+  
     
     public int  crearAltura(){
        return 1;
     }
-   
-   //Verifica si la posicion esta vacia (true) o no (false).
-    public Boolean verificarPosicionOcupada(int posicionObjetivo, Personaje[] listaPersonajes) {
-        for(Personaje personaje:listaPersonajes){
-            int[][] posicion = personaje.obtenerPosicion();
-            if(posicion.equals(posicionObjetivo)){
-                 return false;} //Apenas se cumple esta condicion retorna un false y detiene la funcion.
-        }
-        return true;
+    public boolean movimientoCasilla(int i, int j) { //metodo que comprueba si el movimiento realizado corresponde a una distacia de casilla
+     	int filaA = Math.abs(i - coordenadaX);
+     	int columnaA = Math.abs(j - coordenadaY);
+     	if (filaA == 1){ //verificar si se ha movido una casilla
+        	 return true;
+     	}
+    	 else if (columnaA == 1){ //verificar si se ha movido una casilla
+            return true;
+     	}
+      	return false;
     }
-
     
-    public Boolean distanciaCasillas(int[][] coordenadaActual, int[][] coordenadaFinal) {
-        return null;
-    }
+    
+     
+   //Verifica si la posicion esta vacia (true) o no (false).
+ 
+    
 
-    public int compararAltura(Casilla primeraCasilla, Casilla segundaCasilla) {
+    /*public int compararAltura(Casilla primeraCasilla, Casilla segundaCasilla) {
         int primeraAltura = primeraCasilla.getAltura();
         int segundaAltura = segundaCasilla.getAltura();
         int diferenciaAltura;
@@ -95,7 +101,7 @@ public class Casilla {
         else {
             diferenciaAltura = segundaAltura - primeraAltura;}
         return diferenciaAltura;
-    }
+    }*/
    
    
   

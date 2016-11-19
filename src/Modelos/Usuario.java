@@ -16,9 +16,9 @@ import java.util.*;
 
 public class Usuario extends Jugador {
  
-   private String nombre = "franco";
+   private String nombre = "manzana";
 
-   private String contraseña = "franco";
+   private String contraseña = "pantalon";
 
    private String equipo;
 

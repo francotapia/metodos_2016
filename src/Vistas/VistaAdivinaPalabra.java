@@ -41,13 +41,15 @@ public class VistaAdivinaPalabra extends javax.swing.JFrame {
         facil = new javax.swing.JButton();
         medio = new javax.swing.JButton();
         dificil = new javax.swing.JButton();
-        palabra = new javax.swing.JLabel();
+        pista = new javax.swing.JLabel();
         aceptar = new javax.swing.JButton();
         volverBiblioteca = new javax.swing.JButton();
         intentos = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         titulo.setFont(new java.awt.Font("Arial Black", 0, 48)); // NOI18N
         titulo.setText("Adivina la palabra");
@@ -96,9 +98,10 @@ public class VistaAdivinaPalabra extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(226, 226, 226)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                            .addComponent(ingresarTexto)
-                            .addComponent(palabra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(pista, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                                .addComponent(ingresarTexto)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
@@ -113,9 +116,9 @@ public class VistaAdivinaPalabra extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95)
-                .addComponent(palabra, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
+                .addComponent(pista, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ingresarTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -141,13 +144,14 @@ public class VistaAdivinaPalabra extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,60 +160,9 @@ public class VistaAdivinaPalabra extends javax.swing.JFrame {
     private void ingresarTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarTextoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ingresarTextoActionPerformed
-    
-    ///////////Métodos que activan botones de dificultad///////////////////
-    
-    public void activarFacil(){
-        facil.setEnabled(true);
-    }
-    public void activarMedio(){
-        medio.setEnabled(true);
-    }
-    public void activarDificil(){
-        dificil.setEnabled(true);
-    }
-    //////////Métodos que desactivan botonoes de dificultad//////////////
-   
-    public void desactivarFacil(){
-        facil.setEnabled(false);
-    }
-    public void desactivarMedio(){
-        medio.setEnabled(false);
-    }
-    public void desactivarDificil(){
-        dificil.setEnabled(false);
-    }
+
     
     //////////Métodos get y set de cada botón///////////////////////
-    
-//Botón dificil:
-    
-    public JButton getDificil() {              
-        return dificil;
-    }
-    public void setDificil(JButton dificil) {   
-        this.dificil = dificil;
-    }
-    
-    //Botón facil:
-    
-    public JButton getFacil() {                  
-        return facil;
-    }
-
-    public void setFacil(JButton facil) {
-        this.facil = facil;
-    }
-    
-    //Botón medio:
-    
-    public JButton getMedio() {
-        return medio;
-    }
-
-    public void setMedio(JButton medio) {
-        this.medio = medio;
-    }
     
     //Botón aceptar:
     
@@ -271,9 +224,6 @@ public class VistaAdivinaPalabra extends javax.swing.JFrame {
     ////////ActionListener de cada botón mostrado en pantalla/////////////
     
     public void ActionListener(ActionListener f){
-         this.facil.addActionListener(f);
-         this.medio.addActionListener(f);
-         this.dificil.addActionListener(f);
          this.aceptar.addActionListener(f);
          this.volverBiblioteca.addActionListener(f);
     }
@@ -290,7 +240,7 @@ public class VistaAdivinaPalabra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton medio;
-    private javax.swing.JLabel palabra;
+    private javax.swing.JLabel pista;
     private javax.swing.JLabel titulo;
     private javax.swing.JButton volverBiblioteca;
     // End of variables declaration//GEN-END:variables
@@ -303,5 +253,25 @@ public class VistaAdivinaPalabra extends javax.swing.JFrame {
 
    
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
         
 }
