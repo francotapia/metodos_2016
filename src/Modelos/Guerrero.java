@@ -17,12 +17,26 @@ import java.util.*;
 public class Guerrero extends Personaje {
    /** @pdOid 4bd59fb6-0568-42f5-84f2-185599003b19 */
    private int puntosMovimiento;
+   private int ataqueLargo;
+   private int rango=4;
    
-   /** @param dano
-    * @pdOid a92e8f01-c63a-4873-a2de-5b30e79c8ae8 */
-   public int calcularDanoRecibido(int dano) {
-      // TODO: implement
-      return 0;
-   }
 
+    public Guerrero(String nombrePersonaje) {
+        super(nombrePersonaje);
+    }
+   public String obtenerClase(){
+       return "guerrero";
+   }
+       public int calcularDaño(int ataquePersonajeA, int defensaPersonajeD){
+        int daño=ataquePersonajeA-defensaPersonajeD;
+        daño=daño/4; //al ser guerrero se le hara un cuarto del daño
+        if(daño<0){
+        daño=0;}
+        return daño;
+        }
+       
+       
+       
+       
+    
 }

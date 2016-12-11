@@ -7,7 +7,7 @@ package Controladores;
 
 import Vistas.VistaBibliotecaCentral;
 import Vistas.VistaBuscaminas;
-import Vistas.gato;
+import Vistas.VistaGato;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -35,11 +35,11 @@ public class ControladorBiblioteca implements ActionListener{
             vBiblio.dispose();
         }
          if(vBiblio.getIniciarAdivina()== (JButton)ae.getSource()){
-            controladorAdivina cAdivina = new controladorAdivina();
+            ControladorMenuAdivina cAdivina = new ControladorMenuAdivina();
             vBiblio.dispose();
         }
          if(vBiblio.getIniciarGato()== (JButton)ae.getSource()){
-          gato gato = new gato();
+          VistaGato gato = new VistaGato();
           gato.setVisible(true);
           vBiblio.dispose();
         }

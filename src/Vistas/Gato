@@ -1,19 +1,17 @@
-package Vistas;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Yo
- */
-public class gato extends javax.swing.JFrame {
+package GATO;
 
-   int c1, c2, c3, c4, c5, c6, c7, c8, c9;
-   void principio() {
+import javax.swing.JOptionPane;
+
+
+public class NewJFrame extends javax.swing.JFrame {
+
+    int c1, c2, c3, c4, c5, c6, c7, c8, c9;
+    boolean x = false;
+    boolean y = false;
+
+    void inicio() {
         c1 = 0;
         c2 = 0;
         c3 = 0;
@@ -41,13 +39,15 @@ public class gato extends javax.swing.JFrame {
         b8.setEnabled(true);
         b9.setText("");
         b9.setEnabled(true);
-        
+        x=false;
+        y=false;
     }
-   void marcar(int jugador, int posicion) {
 
-        switch (jugador) {
+    void Marcar(int player, int poss) {
+
+        switch (player) {
             case 1:
-                switch (posicion) {
+                switch (poss) {
 
                     case 1:
                         c1 = 1;
@@ -99,7 +99,7 @@ public class gato extends javax.swing.JFrame {
 
 
             case 2:
-                switch (posicion) {
+                switch (poss) {
                     case 1:
                         c1 = 2;
                         b1.setText("X");
@@ -151,11 +151,12 @@ public class gato extends javax.swing.JFrame {
 
         }
     }
-   boolean ganador(int jugador) {
+
+    boolean ganador(int player) {
 
         boolean gana = false;
 
-        switch (jugador) {
+        switch (player) {
 
             case 1:
                 if (c1 == 1 && c2 == 1 && c3 == 1) {
@@ -170,7 +171,7 @@ public class gato extends javax.swing.JFrame {
                 if (c1 == 1 && c4 == 1 && c7 == 1) {
                     gana = true;
                 }
-                if (c2 == 1 && c5 == 1 && 8 == 1) {
+                if (c2 == 1 && c5 == 1 && c8 == 1) {
                     gana = true;
                 }
                 if (c3 == 1 && c6 == 1 && c9 == 1) {
@@ -216,29 +217,384 @@ public class gato extends javax.swing.JFrame {
         return gana;
     }
 
-   
-   
-    public gato() {
-        initComponents();
+    void bloqueo() {
+        //primera fila horizontal
+        if (c1 == 2 && c2 == 2 && c3 == 0 && !x) {
+            Marcar(1, 3);
+            x = true;
+        }
+        if (c1 == 2 && c2 == 0 && c3 == 2 && !x) {
+            Marcar(1, 2);
+            x = true;
+
+        }
+        if (c1 == 0 && c2 == 2 && c3 == 2 && !x) {
+            Marcar(1, 1);
+            x = true;
+        }
+
+        //segunda fila horizontal
+        if (c4 == 2 && c5 == 2 && c6 == 0 && !x) {
+            Marcar(1, 6);
+            x = true;
+        }
+        if (c4 == 2 && c5 == 0 && c6 == 2 && !x) {
+            Marcar(1, 5);
+            x = true;
+        }
+        if (c4 == 0 && c5 == 2 && c6 == 2 && !x) {
+            Marcar(1, 4);
+            x = true;
+        }
+        //tercera fila horizontal
+        if (c7 == 2 && c8 == 2 && c9 == 0 && !x) {
+            Marcar(1, 9);
+            x = true;
+        }
+        if (c7 == 2 && c8 == 0 && c9 == 2 && !x) {
+            Marcar(1, 8);
+            x = true;
+        }
+        if (c7 == 0 && c8 == 2 && c9 == 2 && !x) {
+            Marcar(1, 7);
+            x = true;
+        }
+        //primera vertical
+        if (c1 == 2 && c4 == 2 && c7 == 0 && !x) {
+            Marcar(1, 7);
+            x = true;
+        }
+        if (c1 == 2 && c4 == 0 && c7 == 2 && !x) {
+            Marcar(1, 4);
+            x = true;
+        }
+        if (c1 == 0 && c4 == 2 && c7 == 2 && !x) {
+            Marcar(1, 1);
+            x = true;
+        }
+        //segunda vertical
+        if (c2 == 2 && c5 == 2 && c8 == 0 && !x) {
+            Marcar(1, 8);
+            x = true;
+        }
+        if (c2 == 2 && c5 == 0 && c8 == 2 && !x) {
+            Marcar(1, 5);
+            x = true;
+        }
+        if (c2 == 0 && c5 == 2 && c8 == 2 && !x) {
+            Marcar(1, 2);
+            x = true;
+        }
+        //tercera vertical
+        if (c3 == 2 && c6 == 2 && c9 == 0 && !x) {
+            Marcar(1, 9);
+            x = true;
+        }
+        if (c3 == 2 && c6 == 0 && c9 == 2 && !x) {
+            Marcar(1, 6);
+            x = true;
+        }
+        if (c3 == 0 && c6 == 2 && c9 == 2 && !x) {
+            Marcar(1, 3);
+            x = true;
+        }
+        //primera diagonal
+        if (c1 == 2 && c5 == 2 && c9 == 0 && !x) {
+            Marcar(1, 9);
+            x = true;
+        }
+        if (c1 == 2 && c5 == 0 && c9 == 2 && !x) {
+            Marcar(1, 5);
+            x = true;
+        }
+        if (c1 == 0 && c5 == 2 && c9 == 2 && !x) {
+            Marcar(1, 1);
+            x = true;
+        }
         
+        if (c3 == 2 && c5 == 2 && c7 == 0 && !x) {
+            Marcar(1, 7);
+            x = true;
+        }
+        if (c3 == 2 && c5 == 0 && c7 == 2 && !x) {
+            Marcar(1, 5);
+            x = true;
+        }
+        if (c3 == 0 && c5 == 2 && c7 == 2 && !x) {
+            Marcar(1, 3);
+            x = true;
+
+        }
+
+
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    //pegar la funcion de bloqueo y cambiarle los "2" por "1" en las condiciones
+    void ganarCPU() {
+        //
+
+        if (c1 == 1 && c2 == 1 && c3 == 0 && !x) {
+            Marcar(1, 3);
+
+            x= true;
+        }
+        if (c1 == 1 && c2 == 0 && c3 == 1 && !x) {
+            Marcar(1, 2);
+            x = true;
+
+        }
+        if (c1 == 0 && c2 == 1 && c3 == 1 && !x) {
+            Marcar(1, 1);
+            x = true;
+        }
+
+        //segunda fila horizontal
+        if (c4 == 1 && c5 == 1 && c6 == 0 && !x) {
+            Marcar(1, 6);
+            x = true;
+        }
+        if (c4 == 1 && c5 == 0 && c6 == 1 && !x) {
+            Marcar(1, 5);
+            x = true;
+        }
+        if (c4 == 0 && c5 == 1 && c6 == 1 && !x) {
+            Marcar(1, 4);
+            x = true;
+        }
+        //tercera fila horizontal
+        if (c7 == 1 && c8 == 1 && c9 == 0 && !x) {
+            Marcar(1, 9);
+            x = true;
+        }
+        if (c7 == 1 && c8 == 0 && c9 == 1 && !x) {
+            Marcar(1, 8);
+            x = true;
+        }
+        if (c7 == 0 && c8 == 1 && c9 == 1 && !x) {
+            Marcar(1, 7);
+            x = true;
+        }
+        //primera vertical
+        if (c1 == 1 && c4 == 1 && c7 == 0 && !x) {
+            Marcar(1, 7);
+            x = true;
+        }
+        if (c1 == 1 && c4 == 0 && c7 == 1 && !x) {
+            Marcar(1, 4);
+            x = true;
+        }
+        if (c1 == 0 && c4 == 1 && c7 == 1 && !x) {
+            Marcar(1, 1);
+            x = true;
+        }
+        //segunda vertical
+        if (c2 == 1 && c5 == 1 && c8 == 0 && !x) {
+            Marcar(1, 8);
+            x = true;
+        }
+        if (c2 == 1 && c5 == 0 && c8 == 1 && !x) {
+            Marcar(1, 5);
+            x = true;
+        }
+        if (c2 == 0 && c5 == 1 && c8 == 1 && !x) {
+            Marcar(1, 2);
+            x = true;
+        }
+        //tercera vertical
+        if (c3 == 1 && c6 == 1 && c9 == 0 && !x) {
+            Marcar(1, 9);
+            x= true;
+        }
+        if (c3 == 1 && c6 == 0 && c9 == 1 && !x) {
+            Marcar(1, 6);
+            x = true;
+        }
+        if (c3 == 0 && c6 == 1 && c9 == 1 && !x) {
+            Marcar(1, 3);
+
+            x = true;
+        }
+        //primera diagonal
+        if (c1 == 1 && c5 == 1 && c9 == 0 && !x) {
+            Marcar(1, 9);
+            x = true;
+        }
+        if (c1 == 1 && c5 == 0 && c9 == 1 && !x) {
+            Marcar(1, 5);
+            x= true;
+        }
+        if (c1 == 0 && c5 == 1 && c9 == 1 && !x) {
+            Marcar(1, 1);
+            x = true;
+        }
+        //segunda diagonal
+        if (c3 == 1 && c5 == 1 && c7 == 0 && !x) {
+            Marcar(1, 7);
+            x = true;
+        }
+        if (c3 == 1 && c5 == 0 && c7 == 1 && !x) {
+            Marcar(1, 5);
+            x = true;
+        }
+        if (c3 == 0 && c5 == 1 && c7 == 1 && !x) {
+            Marcar(1, 3);
+            x= true;
+        }
+
+
+    }
+
+    void marcaCentro() {
+
+        if (c5 == 0 && !x) {
+            Marcar(1, 5);
+            x = true;
+        }
+
+    }
+
+    void recorrerMatriz() {
+        if (c1 == 0 && !x) {
+            Marcar(1, 1);
+            x = true;
+        }
+        if (c2 == 0 && !x) {
+            Marcar(1, 2);
+            x = true;
+            System.out.println("2");
+        }
+        if (c3 == 0 && !x) {
+            Marcar(1, 3);
+            x = true;
+            System.out.println("3");
+        }
+        if (c4 == 0 && !x) {
+            Marcar(1, 4);
+            x = true;
+        }
+        if (c5 == 0 && !x) {
+            Marcar(1, 5);
+            x = true;
+        }
+        if (c6 == 0 && !x) {
+            Marcar(1, 6);
+            x = true;
+        }
+        if (c7 == 0 && !x) {
+            Marcar(1, 7);
+            x = true;
+        }
+        if (c8 == 0 && !x) {
+            Marcar(1, 8);
+            x = true;
+        }
+        if (c9 == 0 && !x) {
+            Marcar(1, 9);
+            x = true;
+        }
+
+    }
+
+   void bloqueoTotal(){
+            if(c4==2&&c5==1&&c9==2&&c7==0&&!x){
+                Marcar(1,7);
+                x=true;
+            }
+            if(c1==2&&c5==1&&c9==2&&c8==0&& !x){
+                Marcar(1,8);
+                x=true;
+            }
+            if(c3==2&&c5==1&&c7==2&&c4==0&& !x){
+                Marcar(1,4);
+                x=true;
+            }
+            if(c3==2&&c5==1&&c8==2&&c6==0&&!x){
+                Marcar(1,6);
+                x=true;
+            }
+            if(c1==2&&c5==1&&c8==2&&c7==0&&!x){
+                Marcar(1,7);
+                x=true;
+            }
+
+   }
+
+    void cpu() {
+        //MARCA QUE NO HAY MARCAS DE LA CPU, X SE VUELVE TRUE CUANDO LA CPU MARCA
+        x = false;
+        y = false;
+        boolean gano =ganador(2);
+
+       
+        if (gano) {
+            JOptionPane.showMessageDialog(null, "felicidades, ganaste", "<3", JOptionPane.PLAIN_MESSAGE);
+            inicio();
+            y = true;
+        }
+
+
+        //esta funcion comprueba si puede ganar
+        if (!x && !y) {
+            System.out.println("ganandocpu");
+            ganarCPU();
+        }
+
+        //intenta bloquear los tiros del ususario en caso de uqe se pueda
+
+        if (!x && !y) {
+            bloqueo();
+            System.out.println("bloqueo");
+        }
+
+        //tira en el centro en caso de que este vacio
+        if (!x && !y) {
+            marcaCentro();
+        }
+
+        if(!x && !y){
+            bloqueoTotal();
+        }
+
+        //si no puedo hacer nada de lo anterior
+
+        if (!x && !x && c3 == 0) {
+            Marcar(1, 3);
+            x=true;
+        }
+        //funcion  de comprobacion de casillas vacias
+
+        if (!x && !y) {
+            recorrerMatriz();
+        }
+
+
+//comprueba si CPU gano
+        if (x && !y) {
+            gano = ganador(1);
+            if (gano) {
+                JOptionPane.showMessageDialog(null, "DERROTA", "GG :C", JOptionPane.PLAIN_MESSAGE);
+                inicio();
+                y = true;
+            }
+
+        }
+
+        if(c1!=0&&c2!=0&&c3!=0&&c4!=0&&c5!=0&&c6!=0&&c7!=0&&c8!=0&&c9!=0){
+            JOptionPane.showMessageDialog(null, "Empate", ":s", JOptionPane.PLAIN_MESSAGE);
+            inicio();
+        }
+
+    }
+
+
+    public NewJFrame() {
+        initComponents();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menuBar1 = new java.awt.MenuBar();
-        menu1 = new java.awt.Menu();
-        menu2 = new java.awt.Menu();
-        menuBar2 = new java.awt.MenuBar();
-        menu3 = new java.awt.Menu();
-        menu4 = new java.awt.Menu();
-        jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         b2 = new javax.swing.JButton();
         b1 = new javax.swing.JButton();
@@ -250,30 +606,8 @@ public class gato extends javax.swing.JFrame {
         b8 = new javax.swing.JButton();
         b7 = new javax.swing.JButton();
 
-        menu1.setLabel("File");
-        menuBar1.add(menu1);
-
-        menu2.setLabel("Edit");
-        menuBar1.add(menu2);
-
-        menu3.setLabel("File");
-        menuBar2.add(menu3);
-
-        menu4.setLabel("Edit");
-        menuBar2.add(menu4);
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GATO");
 
         b2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         b2.addActionListener(new java.awt.event.ActionListener() {
@@ -395,68 +729,75 @@ public class gato extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
-        felinoMarc(2, 2);
-        machine();
-    }//GEN-LAST:event_b2ActionPerformed
-
-    private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
-        felinoMarc(2, 1);
-        machine();
-    }//GEN-LAST:event_b1ActionPerformed
-
-    private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
-        felinoMarc(2, 3);
-        machine();
-    }//GEN-LAST:event_b3ActionPerformed
-
-    private void b6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6ActionPerformed
-        felinoMarc(2, 6);
-        machine();
-    }//GEN-LAST:event_b6ActionPerformed
-
-    private void b5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5ActionPerformed
-        felinoMarc(2, 5);
-        machine();
-    }//GEN-LAST:event_b5ActionPerformed
-
-    private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
-        felinoMarc(2, 4);
-        machine();
-    }//GEN-LAST:event_b4ActionPerformed
-
-    private void b9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b9ActionPerformed
-        felinoMarc(2, 9);
-        machine();
-    }//GEN-LAST:event_b9ActionPerformed
-
-    private void b8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b8ActionPerformed
-        felinoMarc(2, 8);
-        machine();
-    }//GEN-LAST:event_b8ActionPerformed
-
     private void b7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b7ActionPerformed
-        felinoMarc(2, 7);
-        machine();
+        Marcar(2, 7);
+        cpu();
     }//GEN-LAST:event_b7ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void b8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b8ActionPerformed
+        Marcar(2, 8);
+        cpu();
+    }//GEN-LAST:event_b8ActionPerformed
+
+    private void b9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b9ActionPerformed
+        Marcar(2, 9);
+        cpu();
+    }//GEN-LAST:event_b9ActionPerformed
+
+    private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
+        Marcar(2, 4);
+        cpu();
+    }//GEN-LAST:event_b4ActionPerformed
+
+    private void b5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5ActionPerformed
+        Marcar(2, 5);
+        cpu();
+    }//GEN-LAST:event_b5ActionPerformed
+
+    private void b6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6ActionPerformed
+        Marcar(2, 6);
+        cpu();
+    }//GEN-LAST:event_b6ActionPerformed
+
+    private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
+        Marcar(2, 3);
+        cpu();
+    }//GEN-LAST:event_b3ActionPerformed
+
+    private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
+        Marcar(2, 1);
+        cpu();
+    }//GEN-LAST:event_b1ActionPerformed
+
+    private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
+        Marcar(2, 2);
+        cpu();
+    }//GEN-LAST:event_b2ActionPerformed
+
  
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+                new NewJFrame().setVisible(true);
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b1;
     private javax.swing.JButton b2;
@@ -467,21 +808,6 @@ public class gato extends javax.swing.JFrame {
     private javax.swing.JButton b7;
     private javax.swing.JButton b8;
     private javax.swing.JButton b9;
-    private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
-    private java.awt.Menu menu1;
-    private java.awt.Menu menu2;
-    private java.awt.Menu menu3;
-    private java.awt.Menu menu4;
-    private java.awt.MenuBar menuBar1;
-    private java.awt.MenuBar menuBar2;
     // End of variables declaration//GEN-END:variables
-
-    private void felinoMarc(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void machine() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

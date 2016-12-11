@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import ActividadUsuario.ActividadUsuario;
 import Vistas.VistaMenuPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,14 +29,21 @@ public class ControladorMenuPrincipal implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(vMenuP.getBotonBatalla() == (JButton)ae.getSource()){
-            ControladorBatalla cB = new ControladorBatalla();
+            ControladorPreBatalla cB = new ControladorPreBatalla();
+            ActividadUsuario.actividadUsuario("Usuario ingresa a una batalla");
             vMenuP.setVisible(false);
         }            
        if(vMenuP.getBotonBiblioteca() == (JButton)ae.getSource()){
             ControladorBiblioteca cBiblio = new ControladorBiblioteca();
+            ActividadUsuario.actividadUsuario("Usuario ingresa a la Biblioteca central");
             vMenuP.setVisible(false);
         }
         
+       if(vMenuP.getBotonForo() == (JButton)ae.getSource()){
+           ControladorForo cForo = new ControladorForo();
+           ActividadUsuario.actividadUsuario("Usuario ingresa al Foro griego");
+           vMenuP.setVisible(false);
+       }
     }
     
 }

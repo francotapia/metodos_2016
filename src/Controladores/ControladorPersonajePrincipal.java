@@ -6,6 +6,7 @@
 package Controladores;
 
 import ActividadUsuario.ActividadUsuario;
+import Modelos.Usuario;
 import Vistas.VistaPersonajePrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,33 +19,58 @@ import javax.swing.JButton;
 public class ControladorPersonajePrincipal implements ActionListener {
     
     VistaPersonajePrincipal vPerPrincipal;
-    
-    public ControladorPersonajePrincipal(){
+    private Usuario usuario;
+    public ControladorPersonajePrincipal(String nombre, String contraseña){
         vPerPrincipal = new VistaPersonajePrincipal();
         vPerPrincipal.agregarListener(this);
         vPerPrincipal.setVisible(true);
+        usuario = new Usuario();
+        usuario.setNombre(nombre);
+        usuario.setContraseña(contraseña);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (vPerPrincipal.getElegirArquero()  == (JButton)ae.getSource()){ 
-            ControladorBatalla cB = new ControladorBatalla();
-            vPerPrincipal.dispose();
+            usuario.setPersonajePrincipal("arquero");
+            vPerPrincipal.getElegirGuerrero().setEnabled(false);
         }
         
         if (vPerPrincipal.getElegirGuerrero()== (JButton)ae.getSource()){ 
-            ControladorBatalla cB = new ControladorBatalla();
-            vPerPrincipal.dispose();
+             usuario.setPersonajePrincipal("guerrero");
+             vPerPrincipal.getElegirArquero().setEnabled(false);
         }
         
-        if (vPerPrincipal.getElegirNinja()  == (JButton)ae.getSource()){ 
-            ControladorBatalla cB = new ControladorBatalla();
-            vPerPrincipal.dispose();
+        if (vPerPrincipal.getElegirGuerreroAmigo()  == (JButton)ae.getSource()){ 
+            vPerPrincipal.getElegirArqueroAmigo().setEnabled(false);
+             usuario.setPersonajeAmigo("guerrero");
         }
-        if (vPerPrincipal.getElegirMago()  == (JButton)ae.getSource()){ 
-            ControladorLogin cLog = new ControladorLogin();
-            ActividadUsuario.actividadUsuario("Usuario se registra");
-            vPerPrincipal.dispose();
+        if (vPerPrincipal.getElegirArqueroAmigo()  == (JButton)ae.getSource()){ 
+            vPerPrincipal.getElegirGuerreroAmigo().setEnabled(false);
+             usuario.setPersonajeAmigo("arquero");
+        }
+        if(vPerPrincipal.getEjecucion() == (JButton)ae.getSource() ){
+             vPerPrincipal.getCivil().setEnabled(false);
+             usuario.setMalla("ejecucion");
+        }
+        if(vPerPrincipal.getCivil() == (JButton)ae.getSource() ){
+             vPerPrincipal.getEjecucion().setEnabled(false);
+             usuario.setMalla("civil");
+        }
+        
+        if(vPerPrincipal.getJugar() == (JButton)ae.getSource()){
+            if(usuario.registrarBD()){
+                ControladorLogin cl = new ControladorLogin();
+                 vPerPrincipal.dispose();
+                vPerPrincipal.mostrarVentana("Usuario creado con exito", "Usuario creado");
+               
+                
+            }
+            else{
+                vPerPrincipal.mostrarVentana("Usuario existente, intentelo otra vez.", "Error");
+                vPerPrincipal.dispose();  
+                ControladorRegistro cl = new ControladorRegistro();
+            }
         }
    
     

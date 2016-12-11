@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import ActividadUsuario.ActividadUsuario;
 import Modelos.Usuario;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,28 +38,49 @@ public class ControladorLogin  implements ActionListener{ //implementando interf
         
         //Condicion que verifica si se ha presionado el botón registrar
         if(vLog.getRegistrar() == (JButton)ae.getSource()){
-            ActividadUsuario.actividadUsuario("Usuario se registra");
             cReg = new ControladorRegistro();
             vLog.setVisible(false);
         }
         
         //Condición que verifica si el usuario se ha logeado
+        
         if(vLog.getIngresar() == (JButton)ae.getSource()){
-            if(usuario.verificarNombreBd(vLog.getNombreUsuario())){
-                if(usuario.verificarContrasenaBd(vLog.getContraseñaUsuario())){
+             if(vLog.getNombreUsuario().equals("")|| vLog.getContraseñaUsuario().equals("")){
+                vLog.mostrarVentanaVacio();
+            }
+            
+            else{
+            try {
+                if(usuario.usuarioExistente(vLog.getNombreUsuario())){ //verificar si el nombre de usuario no existe
+                    if(usuario.contraseñaExistente(vLog.getContraseñaUsuario())){
                     ActividadUsuario.actividadUsuario("Usuario se logea");
                     cMenuP = new ControladorMenuPrincipal();
                     vLog.dispose();
+                    }
+                    else{
+                        vLog.mostrarVentanaContraseña();
+                    }
                 }
                 else{
-                    vLog.mostrarVentanaContraseña();
+                    vLog.mostrarVentanaUsuario();
+                }
+              
+              
+            } catch (SQLException ex) {
+                vLog.mostrarVentanaUsuario();
+                Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            else{
-               vLog.mostrarVentanaUsuario();
-            }
        }
+        
+        
+           if(vLog.getInvitado() == (JButton)ae.getSource()){
+                cMenuP = new ControladorMenuPrincipal();
+                vLog.dispose();
+                }    
+              }
+         
             
                 
     }
-}
+

@@ -15,7 +15,9 @@ import java.util.Scanner;
  * @author Benxamin
  */
 public class Ahorcado {
-    
+    private String palabra;
+    private String espacios;
+    private int intentos;
     private ArrayList<ArrayList> listaCategorias=new ArrayList<>();
     private ArrayList<String> alimentos = new ArrayList<>();
     private ArrayList<String> animales = new ArrayList<>();
@@ -26,12 +28,21 @@ public class Ahorcado {
         animales.add("perro");
         animales.add("gato");
         animales.add("tortuga");
+        animales.add("gorila");
+        animales.add("jirafa");
+        animales.add("cocodrilo");
         alimentos.add("zanahoria");
         alimentos.add("melon");
         alimentos.add("pan");
+        alimentos.add("azucar");
+        alimentos.add("manzana");
+        alimentos.add("repollo");
         objetos.add("libro");
         objetos.add("cuaderno");
         objetos.add("computador");
+        objetos.add("espada");
+        objetos.add("bateria");
+        objetos.add("audifono");
     }
     
     //Agrega las listas a la lista de categorias.
@@ -43,7 +54,8 @@ public class Ahorcado {
     }
     
     //Constructor de la clase.
-    public Ahorcado(){
+    public Ahorcado(int i){
+        intentos=i;
         agregarPalabras();
         agregarCategorias();
         
@@ -55,7 +67,7 @@ public class Ahorcado {
         int numeroAleatorio =  (int)(rnd.nextDouble()*3); //Cantidad de listas
         ArrayList<String> categoria = listaCategorias.get(numeroAleatorio);
         System.out.println(categoria);
-        int otroNumeroAleatorio =  (int)(rnd.nextDouble()*3);
+        int otroNumeroAleatorio =  (int)(rnd.nextDouble()*6);
         String palabra = categoria.get(otroNumeroAleatorio);
         System.out.println(palabra);
         return palabra;
@@ -69,13 +81,6 @@ public class Ahorcado {
         return verificacion;
     }
     
-    //Pide una letra al usuario, se cambiara al usar KeyListeners o pedir directamente desde la vista.
-    public String pedirLetra(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("----->Ingresa una letra:");
-        String letra= sc.next();
-        System.out.println("La letra ingresada es: "+letra);
-        return letra;}
     
     //Comprueba si la letra ingresada es valida en su formato.
     public boolean validarLetra(String letra){
@@ -102,7 +107,7 @@ public class Ahorcado {
     }
     
     //Actualiza dichos espacios (ver funcion anterior) cuando la letra ingresada esta dentro de la palabra.
-    public String actualizarEspacios(String letra, String palabra, String espacios){
+    public void actualizarEspacios(String letra, String palabra, String espacios){
         String espaciosNuevos = "";
         String[] espaciosSeparados = espacios.split("");
         String[] palabraSeparada = palabra.split("");
@@ -111,7 +116,7 @@ public class Ahorcado {
         while (i<largo){
             String elemento = palabraSeparada[i];
             String otroElemento = espaciosSeparados[i];
-            if(elemento.equals(letra)){
+            if(elemento.equals(letra.toLowerCase())){
                 espaciosNuevos=espaciosNuevos+elemento;
             }
             else if(elemento.equals(otroElemento)){
@@ -120,6 +125,42 @@ public class Ahorcado {
             else {espaciosNuevos=espaciosNuevos+"_";}
             i=i+1;
         }
-        return espaciosNuevos;
+        this.espacios=espaciosNuevos;
     }
+
+    
+    public String obtenerPista(String palabra){
+        String pista;
+        
+        
+        return "";
+    }
+    
+    
+    public int getIntentos() {
+        return intentos;
+    }
+
+    public void setIntentos(int intentos) {
+        this.intentos = intentos;
+    }
+    
+    public String getPalabra() {
+        return palabra;
+    }
+
+    public void setPalabra(String palabra) {
+        this.palabra = palabra;
+    }
+
+    public String getEspacios() {
+        return espacios;
+    }
+
+    public void setEspacios(String espacios) {
+        this.espacios = espacios;
+    }
+    
+    
+    
 }

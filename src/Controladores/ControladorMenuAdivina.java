@@ -16,6 +16,7 @@ import javax.swing.JButton;
  */
 public class ControladorMenuAdivina implements ActionListener {
     VistaMenuAdivina vMa;
+    private  int botonElegido = 0;
 
     public ControladorMenuAdivina(){
         vMa = new VistaMenuAdivina();
@@ -29,18 +30,21 @@ public class ControladorMenuAdivina implements ActionListener {
         
         //botones de dificultad.
         if(vMa.getFacil() == (JButton)ae.getSource()){
+            botonElegido = 1;
             vMa.desactivarMedio();
             vMa.desactivarDificil();
             vMa.visibleCancelar();
             vMa.activarJugar();
         }
         if(vMa.getMedio() == (JButton)ae.getSource()){
+            botonElegido = 2;
             vMa.desactivarFacil();
             vMa.desactivarDificil();
             vMa.visibleCancelar();
             vMa.activarJugar();
         }
         if(vMa.getDificil() == (JButton)ae.getSource()){
+            botonElegido = 3;
             vMa.desactivarMedio();
             vMa.desactivarFacil();
             vMa.visibleCancelar();
@@ -49,7 +53,8 @@ public class ControladorMenuAdivina implements ActionListener {
         
         //boton para jugar
         if(vMa.getJugar() == (JButton)ae.getSource()){
-            controladorAdivina cA = new controladorAdivina();
+            System.out.println(botonElegido);
+            controladorAdivina cA = new controladorAdivina(botonElegido);
             vMa.setVisible(false);
         }
         

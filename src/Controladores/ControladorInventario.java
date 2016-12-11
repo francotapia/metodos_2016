@@ -5,10 +5,26 @@
  */
 package Controladores;
 
+import Vistas.VistaInventario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author franco
  */
-public class ControladorInventario {
+public class ControladorInventario implements ActionListener {
+    
+    private VistaInventario vInventario;
+    
+    public ControladorInventario(){
+        
+    
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        
+    }
     
 }

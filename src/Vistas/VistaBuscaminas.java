@@ -25,6 +25,7 @@ public class VistaBuscaminas extends javax.swing.JFrame {
     public VistaBuscaminas() {        // este es el constructor de vista buscaminas
         initComponents();
         cargar();
+        setLocationRelativeTo(null);
     }
 
    

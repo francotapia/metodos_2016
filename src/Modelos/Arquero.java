@@ -17,6 +17,11 @@ import java.util.*;
 public class Arquero extends Personaje {
    /** @pdOid 4f1d9793-531e-4dbf-ab46-ad3765877fe7 */
    private int puntosMovimiento;
+   private int rango=10;
+
+    public Arquero(String nombrePersonaje) {
+        super(nombrePersonaje);
+    }
    
    /** @param dano
     * @pdOid 3f37ed7e-54da-42da-90d7-76d6549f2b4b */
@@ -25,4 +30,7 @@ public class Arquero extends Personaje {
       return 0;
    }
 
+   public String obtenerClase(){
+       return "arquero";
+   }
 }

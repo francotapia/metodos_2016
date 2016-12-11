@@ -6,9 +6,11 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import static javafx.scene.paint.Color.color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -21,11 +23,13 @@ public class VistaBatalla extends javax.swing.JFrame {
     /**
      * Creates new form VistaBatalla
      */
+     
     private JButton[][] casillas;
     
     public VistaBatalla() {
        initComponents();
        generarBotones();
+       setLocationRelativeTo(null);
         
     }
     
@@ -33,22 +37,22 @@ public class VistaBatalla extends javax.swing.JFrame {
         return volver;
     }
     
-    public JButton[][] generarBotones(){
+    public boolean generarBotones(){
         this.casillas = new JButton [25][25];
         JFrame v = new JFrame();
-        jPanel1.setLayout(new GridLayout(25,25));
+        panelEscenario.setLayout(new GridLayout(25,25));
         for (int x = 0;x < 25; x++){
             for (int y = 0;y < 25; y++){
                 casillas[x][y] = new JButton();
-                jPanel1.add(casillas[x][y]);
+                panelEscenario.add(casillas[x][y]);
             }
                  
         }
-        return casillas;
+      return true;
     }
     
      public JPanel getjPanel1() {
-        return jPanel1;
+        return panelEscenario;
     }
     
     public JButton getAtaqueC() {
@@ -82,17 +86,52 @@ public class VistaBatalla extends javax.swing.JFrame {
         this.casillas = casillas;
     }
 
+    public void pintarAlturas(int i, int j,int altura){
+        if(altura  == 0 ){
+            casillas[i][j].setBackground(Color.LIGHT_GRAY);
+        }
+        if(altura  == 1 ){
+            casillas[i][j].setBackground(Color.yellow);
+        }
+        if(altura == 2){
+            casillas[i][j].setBackground(Color.orange);
+        }
+        if(altura == 3){
+            casillas[i][j].setBackground(Color.pink);
+        }
+        if(altura == 4){
+            casillas[i][j].setBackground(Color.red);
+        }
+        if(altura == 5){
+            casillas[i][j].setBackground(Color.MAGENTA);
+        }
+        
+    }
 
-
-    public void marcarPosicion(int i, int j){
+    public void marcarRio(int i, int j){
         this.casillas[i][j].setBackground(Color.blue);
+    }
+    
+    public void marcarPosicion(int i,int j){
+        this.casillas[i][j].setBackground(Color.green);
+    }
+    
+    public void desmarcarPosicion(int i,int j){
+        this.casillas[i][j].setBackground(null);
+    }
+    
+    public void activarBotonAtaqueCorto(){
+        ataqueC.setEnabled(true);
+    }
+    public void desactivarBotonAtaqueCorto(){
+        ataqueC.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelEscenario = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         mover = new javax.swing.JButton();
         ataqueC = new javax.swing.JButton();
@@ -101,10 +140,13 @@ public class VistaBatalla extends javax.swing.JFrame {
         usarObjeto = new javax.swing.JButton();
         pasar = new javax.swing.JButton();
         volver = new javax.swing.JButton();
+        accionesUsuario = new javax.swing.JLabel();
+        personaje1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+        panelEscenario.setLayout(new java.awt.GridLayout(1, 0));
 
         mover.setText("Mover");
 
@@ -153,33 +195,75 @@ public class VistaBatalla extends javax.swing.JFrame {
 
         volver.setText("Volver");
 
+        javax.swing.GroupLayout personaje1Layout = new javax.swing.GroupLayout(personaje1);
+        personaje1.setLayout(personaje1Layout);
+        personaje1Layout.setHorizontalGroup(
+            personaje1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        personaje1Layout.setVerticalGroup(
+            personaje1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(125, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(volver)
-                        .addContainerGap())))
+                        .addComponent(panelEscenario, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(volver))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(accionesUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(0, 204, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(personaje1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(volver)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(volver)
+                        .addComponent(panelEscenario, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(accionesUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(personaje1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();
@@ -199,33 +283,49 @@ public class VistaBatalla extends javax.swing.JFrame {
             }
         }
     }
+
+    public JPanel getPanelEscenario() {
+        return panelEscenario;
+    }
+
+    public JLabel getAccionesUsuario() {
+        return accionesUsuario;
+    }
+
+    public void setAccionesUsuario(String accionesUsuario) {
+        this.accionesUsuario.setText(accionesUsuario);
+    }
    
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel accionesUsuario;
     private javax.swing.JButton ataqueC;
     private javax.swing.JButton ataqueL;
     private javax.swing.JButton ataqueM;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton mover;
+    private javax.swing.JPanel panelEscenario;
     private javax.swing.JButton pasar;
+    private javax.swing.JPanel personaje1;
     private javax.swing.JButton usarObjeto;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 
-public void agregarListener(ActionListener f){
-  
-    mover.addActionListener(f);
-    ataqueC.addActionListener(f);
-    ataqueL.addActionListener(f);
-    ataqueM.addActionListener(f);
-    usarObjeto.addActionListener(f);
-    pasar.addActionListener(f);
-    volver.addActionListener(f);
+public void agregarListener(MouseListener f){
+    
+    panelEscenario.addMouseListener(f);
+    mover.addMouseListener(f);
+    ataqueC.addMouseListener(f);
+    ataqueL.addMouseListener(f);
+    ataqueM.addMouseListener(f);
+    usarObjeto.addMouseListener(f);
+    pasar.addMouseListener(f);
+    volver.addMouseListener(f);
     for (int i=0;i<25;i++) { //por cada fila del tablero
             for (int j=0;j<25;j++) { //por cada elemento de cada fila
-                this.casillas[i][j].addActionListener(f); //escuchar elementos(botones)
+                this.casillas[i][j].addMouseListener(f); //escuchar elementos(botones)
             }
         } 
 

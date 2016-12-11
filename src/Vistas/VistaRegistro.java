@@ -7,6 +7,7 @@ package Vistas;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -21,6 +22,7 @@ public class VistaRegistro extends javax.swing.JFrame {
      */
     public VistaRegistro() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -46,9 +48,10 @@ public class VistaRegistro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel5.setText("Registro");
 
-        jLabel6.setText("Ingrese nombre Usuario");
+        jLabel6.setText("Ingrese nombre usuario");
 
         jLabel7.setText("Ingrese Contraseña");
 
@@ -75,54 +78,65 @@ public class VistaRegistro extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(320, 320, 320)
-                .addComponent(jLabel5)
-                .addGap(310, 310, 310)
-                .addComponent(Salir1))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel6)
-                .addGap(45, 45, 45)
-                .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel7)
-                .addGap(64, 64, 64)
-                .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel8)
-                .addGap(70, 70, 70)
-                .addComponent(RepContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addComponent(BotonRegistrar))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(Atras))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(320, 320, 320)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                        .addComponent(Salir1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(300, 300, 300)
+                                .addComponent(BotonRegistrar))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(Atras))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(RepContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addGap(100, 100, 100)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel6))
+                                    .addGap(45, 45, 45)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                        .addComponent(NombreUsuario)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel5))
-                    .addComponent(Salir1))
-                .addGap(46, 46, 46)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Salir1)))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(RepContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(RepContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
                 .addComponent(BotonRegistrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(Atras)
@@ -155,7 +169,7 @@ public class VistaRegistro extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
-    public JButton getAtras() {
+      public JButton getAtras() {
         return Atras;
     }
 
@@ -171,24 +185,27 @@ public class VistaRegistro extends javax.swing.JFrame {
         this.BotonRegistrar = BotonRegistrar;
     }
 
-    public JPasswordField getContraseña() {
-        return Contraseña;
+    public String getContraseña() {
+        String contraseña = String.valueOf(Contraseña.getPassword());
+        return contraseña;
     }
 
     public void setContraseña(JPasswordField Contraseña) {
         this.Contraseña = Contraseña;
     }
 
-    public JTextField getNombreUsuario() {
-        return NombreUsuario;
+    public String getNombreUsuario() {
+        String nombreUsuario = NombreUsuario.getText();
+        return nombreUsuario;
     }
 
-    public void setNombreUsuario(JTextField NombreUsuario) {
-        this.NombreUsuario = NombreUsuario;
+    public void setNombreUsuario(String nombre) {
+        NombreUsuario.setText(nombre);
     }
 
-    public JPasswordField getRepContraseña() {
-        return RepContraseña;
+    public String getRepContraseña() {
+        String repContraseña = String.valueOf(RepContraseña.getPassword());
+        return repContraseña;
     }
 
     public void setRepContraseña(JPasswordField RepContraseña) {
@@ -219,7 +236,6 @@ public class VistaRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-
 public void agregarListener(ActionListener f){
     this.Atras.addActionListener(f);
     this.BotonRegistrar.addActionListener(f);
@@ -230,5 +246,8 @@ public void agregarListener(ActionListener f){
     
 }
 
+public void mostrarVentana(String palabra, String titulo){
+        JOptionPane.showMessageDialog(null,palabra,titulo,JOptionPane.INFORMATION_MESSAGE);
+    }
 
 }

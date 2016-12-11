@@ -16,31 +16,32 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class TipoDeEscenario {
     
+    private String[][] matrizTerreno;
     private int contadorTierra;
     private int contadorMontaña;
     private TipoDeCasilla listaCasillas;
     private int[] numeros;
-
+    private Escenario escenario;
+    
     public TipoDeEscenario(){
         determinarTerrenoModuloBasico();
+       
     }
-    private String[][] matrizTerreno;
-    
-  
-  
-    
+
     public String[][] getMatrizTerreno() {
         return matrizTerreno;
     }
     
-    public String[][] determinarTerrenoModuloBasico() {
+      public String[][] determinarTerrenoModuloBasico() {
        int StockRio=78;
        int riosx[]=getNumeroRandom(0,24);  
        int riosy[]=getNumeroRandom(0,24); 
        matrizTerreno = new String[25][25];
        
-       ArrayList<int[]> coordenadas = new ArrayList<int[]>();
-        
+        for (int i = 0; i < StockRio; i++) {
+            matrizTerreno[riosx[i]][riosy[i]]="tierra";
+            
+        }
        
        int cantRio = 0;
        int cantTierra= 0;
@@ -58,17 +59,16 @@ public class TipoDeEscenario {
         
         for (int j = 0; j < 25; j++) {
             for (int k = 0; k < 25; k++) {
-                if (matrizTerreno[j][k]!="rio"){
+                if (matrizTerreno[j][k]!="rio"){ matrizTerreno[j][k]="tierra";}
                   
-                        matrizTerreno[j][k]="tierra";
-                  }
-}}
+                    }}
+        
             for (int k = 0; k < 25; k++) {
                 for (int l = 0; l < 25; l++) {
                     
                 if (matrizTerreno[k][l]=="rio"){cantRio++;}
                 if (matrizTerreno[k][l]=="tierra"){cantTierra++;}
-                
+
                     
                 }
                 
@@ -77,10 +77,8 @@ public class TipoDeEscenario {
        matrizTerreno[0][24]="tierra"; 
        matrizTerreno[24][0]="tierra";
        matrizTerreno[24][24]="tierra";
-       matrizTerreno[0][0]="tierra";
-        System.out.println(cantRio);
-        System.out.println(cantTierra);
-        return matrizTerreno;
+       matrizTerreno[0][0]="rio";
+       return matrizTerreno;
   
    
     }

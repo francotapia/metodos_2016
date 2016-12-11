@@ -16,6 +16,7 @@ public class VistaPersonajeSecundario extends javax.swing.JFrame {
      */
     public VistaPersonajeSecundario() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

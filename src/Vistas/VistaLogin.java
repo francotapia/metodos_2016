@@ -20,6 +20,7 @@ public class VistaLogin extends javax.swing.JFrame {
      */
     public VistaLogin() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -39,6 +40,7 @@ public class VistaLogin extends javax.swing.JFrame {
         ingresar = new javax.swing.JButton();
         registrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        invitado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,7 +57,11 @@ public class VistaLogin extends javax.swing.JFrame {
 
         registrar.setText("Registrar");
 
-        jLabel1.setText("FINAL INFO TACTICS KAYOKEN X1000000");
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("FINAL INFO TACTICS");
+
+        invitado.setText("Entrar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,6 +87,10 @@ public class VistaLogin extends javax.swing.JFrame {
                         .addGap(61, 61, 61)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(77, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(invitado)
+                .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +105,9 @@ public class VistaLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(contraseñaLogin))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(invitado)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ingresar)
                     .addComponent(registrar))
@@ -129,12 +141,14 @@ public class VistaLogin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
- 
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contraseña;
     private javax.swing.JLabel contraseñaLogin;
     private javax.swing.JButton ingresar;
+    private javax.swing.JButton invitado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombre;
@@ -155,6 +169,15 @@ public class VistaLogin extends javax.swing.JFrame {
     public JButton getIngresar(){                 //obtengo el OK del boton
         return ingresar;
     }   
+        public JButton getInvitado() {
+        return invitado;
+    }
+        
+    public void mostrarVentanaVacio(){
+        JOptionPane.showMessageDialog(null, "Campos vacios."
+        + " Ingrese el nombre de usuario y contraseña",   "Error en el ingreso",
+        JOptionPane.INFORMATION_MESSAGE);
+    }
 
     public void mostrarVentanaContraseña(){
         JOptionPane.showMessageDialog(null, "Contraseña incorrecta."
@@ -169,6 +192,7 @@ public class VistaLogin extends javax.swing.JFrame {
     }
 //Listener del programa para botones: registrar e ingresar
     public void agregarListener(ActionListener al){
+        this.invitado.addActionListener(al);
         this.ingresar.addActionListener(al);  //espera a esuchar una acción del usuario
         this.registrar.addActionListener(al); //espera a esuchar una acción del usuario
         this.nombre.addActionListener(al);

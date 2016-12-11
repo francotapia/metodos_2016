@@ -42,6 +42,7 @@ public class ActividadUsuario {
             //en caso de no poder escribir 
             }catch(IOException e){
                 System.out.println("No es posible escribir en el archivo");
+                
             }
     }
 }
