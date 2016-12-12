@@ -52,7 +52,7 @@ public class ControladorPreBatalla implements ListSelectionListener, ActionListe
     }
     
     public ControladorPreBatalla(){
-        batalla = new Batalla();
+        batalla = new Batalla(null);
         vpb = new VistaPreBatalla();
         usuario = new Usuario();
         actualizarListaDisponibles();
@@ -65,10 +65,7 @@ public class ControladorPreBatalla implements ListSelectionListener, ActionListe
     }
     
     
-    public static void main(String[] args) {
-        ControladorPreBatalla cpb = new ControladorPreBatalla();
-    }
-
+    
     @Override
     public void valueChanged(ListSelectionEvent lse) {
         if (!lse.getValueIsAdjusting()) {
@@ -82,7 +79,7 @@ public class ControladorPreBatalla implements ListSelectionListener, ActionListe
 //            vpb.setLabelVida("Vida: " + personajeSeleccionado.getPuntosVida());
 //            vpb.setLabelNivel("Nivel: " + personajeSeleccionado.getNivel());
 //            vpb.borrarSeleccionDisponibles();
-                  //label.setText(listaPersonajesDisponibles.getSelectedValue().toString());
+                  //JLabel.setText(listaPersonajesDisponibles.getSelectedValue().toString());
         }
     }
 
@@ -154,7 +151,7 @@ public class ControladorPreBatalla implements ListSelectionListener, ActionListe
             vpb.setLabelNivel("Nivel: " + personajeSeleccionado.getNivel());
         }
         if(vpb.getBotonIniciarBatalla() == (JButton)e.getSource()){ 
-            ControladorBatalla cb = new ControladorBatalla();
+            ControladorBatalla cb = new ControladorBatalla(batalla.getEquipoUsuario());
             vpb.dispose();
         }
             

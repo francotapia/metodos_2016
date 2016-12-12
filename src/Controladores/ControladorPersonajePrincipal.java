@@ -20,6 +20,8 @@ public class ControladorPersonajePrincipal implements ActionListener {
     
     VistaPersonajePrincipal vPerPrincipal;
     private Usuario usuario;
+    private String principal;
+    private String amigo;
     public ControladorPersonajePrincipal(String nombre, String contraseña){
         vPerPrincipal = new VistaPersonajePrincipal();
         vPerPrincipal.agregarListener(this);
@@ -27,6 +29,7 @@ public class ControladorPersonajePrincipal implements ActionListener {
         usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setContraseña(contraseña);
+        
     }
 
     @Override

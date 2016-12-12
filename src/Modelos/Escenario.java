@@ -62,7 +62,30 @@ public class Escenario {
         return true;
     }
     //Métodos propios de la clase
-    public boolean posicionarPersonaje(ArrayList<String> listaPersonajes){
+    public boolean posicionarPersonajeUsuario(ArrayList<Personaje> listaPersonajes){
+        int contador = 0;
+        Random rand = new Random();
+        for(int x = 0;x<listaPersonajes.size();){
+            int i = rand.nextInt(10); //se obtiene una fila al azar
+            int j = rand.nextInt(10); //se obtiene una colummna al azar
+            if(tipoEscenario.getMatrizTerreno()[i][j] != "rio" && matrizCoordenada[i][j].getPersonaje().getNombrePersonaje() == null){
+                matrizCoordenada[i][j].setPersonaje(listaPersonajes.get(x));
+                System.out.println("los personajes agregados son : " + matrizCoordenada[i][j].getPersonaje().getNombrePersonaje());
+                contador = 0;
+                x++;
+            }
+            else{
+                x = x;
+                System.out.println("se debe reintear el posicionamiento//Método posicionarPersonaje_Escenario");
+                contador++;
+                
+                
+            }
+                    
+        }
+        return true;
+    }
+    public boolean posicionarPersonajeCpu(ArrayList<Personaje> listaPersonajes){
         int contador = 0;
         Random rand = new Random();
         for(int x = 0;x<listaPersonajes.size();){
@@ -107,8 +130,7 @@ public class Escenario {
     
     public boolean verificarPosicionLibre(int i, int j){
         if(matrizCoordenada[i][j].getPersonaje().getNombrePersonaje() == null){
- 
-            return true;
+             return true;
         }
         return false;
     }
@@ -123,11 +145,7 @@ public class Escenario {
     }
     
   
-    public void agregarPosicion(int i, int j,String personaje){
-        matrizCoordenada[i][j].setPersonaje(personaje);
-        
-    
-      }
+ 
     
 //    public boolean quitarPosicion(){
 //        for(int x=0; x<25; x++){
@@ -150,6 +168,11 @@ public class Escenario {
      * Metodo que asigna las alturas correspondientes segun las reglas generales y las especificas del modulo basico.
      * @return int[][] Retorna una lista de listas con todos los valores de las alturas en las posiciones correspondientes a sus casillas.
      */
+    
+    public Casilla getCasillaDeMatriz(int[] posicion){
+        return this.matrizCoordenada[posicion[0]][posicion[1]];
+    }
+    
     public boolean asignarAlturasModuloBasico(){
     	Random rnd = new Random();
 	int numeroAleatorio; //Variable sobre el cual se aplicara el random.

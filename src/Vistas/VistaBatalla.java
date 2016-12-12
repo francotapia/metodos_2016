@@ -87,23 +87,29 @@ public class VistaBatalla extends javax.swing.JFrame {
     }
 
     public void pintarAlturas(int i, int j,int altura){
+    Color cafe0=new Color(232,195,158);
+    Color cafe1=new Color(193, 154, 107);
+    Color cafe2=new Color(186, 124, 69);
+    Color cafe3=new Color(150, 113, 23);
+    Color cafe4=new Color(89,46,11);
+    Color cafe5=new Color(63,34,18);
         if(altura  == 0 ){
-            casillas[i][j].setBackground(Color.LIGHT_GRAY);
+            casillas[i][j].setBackground(cafe0);
         }
         if(altura  == 1 ){
-            casillas[i][j].setBackground(Color.yellow);
+            casillas[i][j].setBackground(cafe1);
         }
         if(altura == 2){
-            casillas[i][j].setBackground(Color.orange);
+            casillas[i][j].setBackground(cafe2);
         }
         if(altura == 3){
-            casillas[i][j].setBackground(Color.pink);
+            casillas[i][j].setBackground(cafe3);
         }
         if(altura == 4){
-            casillas[i][j].setBackground(Color.red);
+            casillas[i][j].setBackground(cafe4);
         }
         if(altura == 5){
-            casillas[i][j].setBackground(Color.MAGENTA);
+            casillas[i][j].setBackground(cafe5);
         }
         
     }
@@ -114,6 +120,9 @@ public class VistaBatalla extends javax.swing.JFrame {
     
     public void marcarPosicion(int i,int j){
         this.casillas[i][j].setBackground(Color.green);
+    }
+    public void marcarCpu(int i, int j){
+        this.casillas[i][j].setBackground(Color.red);
     }
     
     public void desmarcarPosicion(int i,int j){
@@ -158,7 +167,7 @@ public class VistaBatalla extends javax.swing.JFrame {
 
         usarObjeto.setText("Utilizar objeto");
 
-        pasar.setText("Pasar turno");
+        pasar.setText("Finalizar turno");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -230,9 +239,7 @@ public class VistaBatalla extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(volver))
+                                    .addComponent(volver, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

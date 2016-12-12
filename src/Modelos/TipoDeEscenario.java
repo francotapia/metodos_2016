@@ -91,4 +91,9 @@ public class TipoDeEscenario {
        }
        return numeros;
    }
+ 
+ 
+    public String getCasillaDeEscenario(int[] posicion){
+        return this.matrizTerreno[posicion[0]][posicion[1]];
+    }
 }

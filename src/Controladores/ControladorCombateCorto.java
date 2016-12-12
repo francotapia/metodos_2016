@@ -26,19 +26,21 @@ public class ControladorCombateCorto implements ActionListener {
     private ArrayList<String> secuenciaAtaques = new ArrayList<>();
             
     public ControladorCombateCorto(){
-        vCombateCorta = new VistaCombateCortoRango();
-        vCombateCorta.agregarListener(this);
-        batalla = new Batalla();
-        personaje = new Personaje(3,5,100,10,50);
-        personajeEnemigo = new Personaje(2,3,80,10,30);
-        int cantidadAtaquesVisibles = batalla.calcularAtaquesVisibles(personaje,personajeEnemigo);
-        ArrayList<String> secuenciaCPU = batalla.solicitarSecuenciaAtaquesCPU(personajeEnemigo);
-        batalla.setSecuenciaCPU(secuenciaCPU);
-        String listaCPU = batalla.obtenerListaAtaquesStringCPU(secuenciaCPU,cantidadAtaquesVisibles);
-        System.out.println(listaCPU);
-        vCombateCorta.setLabelSecuenciaCPU(listaCPU);
-        vCombateCorta.setVisible(true);
-        }
+          personaje = new Personaje("benja","usuario","compañero","arquero","alumno",100,100,100,100,5,1,1,3,3,3,0,7);
+          personajeEnemigo = new Personaje("fabian","usuario","compañero","guerrero","alumno",100,100,100,100,5,1,1,3,3,3,0,7);
+            vCombateCorta = new VistaCombateCortoRango();
+            vCombateCorta.agregarListener(this);
+            batalla = new Batalla();
+    //        personaje = new Personaje(3,5,100,10,50);
+    //        personajeEnemigo = new Personaje(2,3,80,10,30);
+            int cantidadAtaquesVisibles = batalla.calcularAtaquesVisibles(personaje,personajeEnemigo);
+            ArrayList<String> secuenciaCPU = batalla.solicitarSecuenciaAtaquesCPU(personajeEnemigo);
+            batalla.setSecuenciaCPU(secuenciaCPU);
+            String listaCPU = batalla.obtenerListaAtaquesStringCPU(secuenciaCPU,cantidadAtaquesVisibles);
+            System.out.println(listaCPU);
+            vCombateCorta.setLabelSecuenciaCPU(listaCPU);
+            vCombateCorta.setVisible(true);
+            }
 
   
     

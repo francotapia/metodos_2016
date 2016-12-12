@@ -16,27 +16,45 @@ import java.util.*;
 /** @pdOid f9b0b4a4-39d7-4807-8436-508c8faaab7f */
 public class Batalla {
 
-    public Escenario getEscenario() {
-        return escenario;
-    }
+   
     
     private Escenario escenario;
     private int numeroPersonajesJugador;
     private Personaje personaje;
     private ArrayList<Personaje> equipoUsuario = new ArrayList<>();
+    private Cpu cpu;
     private ArrayList<Personaje> equipoCPU = new ArrayList<>();
     private ArrayList<String> personajesVivosJugador;
-    private java.util.Collection<Jugador> jugador;
     private Personaje[] personajesInicial;
     private int rango;
     private ArrayList<String> secuenciaCPU;
     private ArrayList<String> secuenciaAtaques;
+    private ArrayList<Personaje> listaTotal;
+    private ArrayList<Personaje> listaOrdenada;
     
-     public Batalla(){
-        agregarPersonajeEscenario();
+     public Batalla(ArrayList<Personaje> equipoUsuario){
+        cpu = new Cpu();
         escenario = new Escenario();
+        this.equipoUsuario = equipoUsuario;
+        solicitarPersonajesCPU();
+        listaOrdenada = new ArrayList<>();
+        listaTotal = new ArrayList<>();
+    
+ 
+////       
 
    }
+
+    public Batalla() {
+        
+    }
+     
+    public ArrayList<Personaje> getEquipoCPU() {
+        return equipoCPU;
+    }
+    public ArrayList<Personaje> getEquipoUsuario() {
+        return equipoUsuario;
+    }
    public ArrayList<String> getPersonajesVivosJugador() {
         return personajesVivosJugador;
     }
@@ -44,19 +62,37 @@ public class Batalla {
     public ArrayList<String> getSecuenciaAtaques() {
         return secuenciaAtaques;
     }
-    public void agregarPersonajeEscenario(){
-        personajesVivosJugador = new ArrayList<>();
-        personajesVivosJugador.add("1");
-        personajesVivosJugador.add("2");
-        personajesVivosJugador.add("3");
-        personajesVivosJugador.add("4");
-        personajesVivosJugador.add("5");
-        
-   }
+   
     
+    public Escenario getEscenario() {
+        return escenario;
+    }
+    
+    public boolean pasarTurno(int turnos){
+        for (int i = 0; i < listaOrdenada.size(); i++) {
+            if(turnos < listaOrdenada.size()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean solicitarPersonajesCPU(){
+        int contador = 0;
+        for (int i = 0; i < cpu.getEquipo().size(); i++) {
+            if(contador < 8){
+                equipoCPU.add(cpu.getEquipo().get(i));
+                        contador++;
+                        
+            }
+        }
+        return true;
+    }
+    
+     public ArrayList<Personaje> getListaOrdenada() {
+        return listaOrdenada;
+    }
      
-
-
     public boolean solicitarPersonajesBatalla(ArrayList<Personaje> equipoUsuario, ArrayList<Personaje> listaPersonajesSeleccionados, Personaje personajeSeleccionado){
 	ArrayList<Personaje> listaEquipoUsuario = new ArrayList<>();
 	int i = 0;
@@ -78,7 +114,7 @@ public class Batalla {
 	}
         //Hasta aca solo se actualiza la lista para tener los vigentes.^^^^
 	listaPersonajesSeleccionados.add(personajeSeleccionado);
-	this.equipoUsuario=listaPersonajesSeleccionados;	
+	this.equipoUsuario=listaPersonajesSeleccionados;
 	return true;
 	//Maximo seis personajes, esto lo regulara el controlador.
     }
@@ -368,8 +404,9 @@ public class Batalla {
    
    
     public boolean casillaDesocupada(int i, int j){
-        if(escenario.getMatrizCoordenada()[i][j].getPersonaje().getNombrePersonaje() != null){
-            return true;
+        if(escenario.getMatrizCoordenada()[i][j].getPersonaje() != null){
+            if(escenario.getMatrizCoordenada()[i][j].getPersonaje().getDueñoPersonaje() == "cpu")
+                return true;
         }
         return false;
     }
@@ -396,6 +433,40 @@ public class Batalla {
         return rango;
     }
     
+    //velocidad
+    
+    public boolean agregarListasVelocidades(){
+        crearListaVelocidades(equipoUsuario,equipoCPU);
+        return true;
+    }
+    public boolean crearListaVelocidades(ArrayList<Personaje> equipoUsuario, ArrayList<Personaje> equipoCPU){
+	listaTotal.addAll(equipoUsuario);
+	listaTotal.addAll(equipoCPU);
+	int i;
+	int velocidadMayor;
+	while(listaTotal.size()!=0){
+		i=0;
+		velocidadMayor=0;
+		for(Personaje personaje : listaTotal){
+			if(personaje.getVelocidad()>velocidadMayor){
+				velocidadMayor=personaje.getVelocidad();
+				break;
+			}
+		}
+		for(Personaje personaje : listaTotal){
+			if(personaje.getVelocidad()==velocidadMayor){
+				listaOrdenada.add(personaje);
+			}
+			else{
+				i++;
+			}
+		}
+		listaTotal.remove(i);
+	}
+	return true;
+}
+    
+   
     public boolean atacarOponente(int i, int j, int x,int y){
         //si la defensa del oponente es menor al ataque del atacante
         if(escenario.getMatrizCoordenada()[x][y].getPersonaje().getPuntosAtaqueLargo() >  escenario.getMatrizCoordenada()[i][j].getPersonaje().getPuntoDefensa()){

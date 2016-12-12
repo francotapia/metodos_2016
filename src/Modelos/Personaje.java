@@ -19,6 +19,10 @@ public class Personaje {
     public void setNombrePersonaje(String nombrePersonaje) {
         this.nombrePersonaje = nombrePersonaje;
     }
+
+    public String getDueñoPersonaje() {
+        return dueñoPersonaje;
+    }
     
    private String dueñoPersonaje;
    private String nombrePersonaje;
@@ -27,7 +31,7 @@ public class Personaje {
    private int puntosAtaqueCortos;
    private int puntosAtaqueLargo;
    private int puntoDefensa;
-   private int puntoMovimiento = 3;
+   private int puntoMovimiento ;
    private int puntoVelocidad;
    private String armamento;
    private int amistad;
@@ -43,7 +47,9 @@ public class Personaje {
    private int stockAtaqueEspecial;
    private TipoDeEscenario tipoEscenario;
    private ArrayList<String> listaPersonaje ;
-
+   private String estadoPersonaje;
+   private int ataqueLargo;
+   private int velocidad;
    
    public Personaje(String personaje){
         this.nombrePersonaje = personaje;
@@ -53,20 +59,24 @@ public class Personaje {
        
 
    }
-    public Personaje (int i, int j, int ataqueCorto, int defensa, int vida, String nombre,String tipo,String rol,String dueñoPersonaje) {
-        this.stockAtaqueAlto=i;
-        this.stockAtaqueMedio=i;
-        this.stockAtaqueBajo=i;
-        this.stockAtaqueEspecial=i;
-        this.nivel=j;
+    public Personaje (String nombrePersonaje,String tipoJugador,String estadoPersonaje,String rolPersonaje,String tipoPersonaje,int vida,int defensa,int ataqueLargo,int ataqueCorto,int movimiento,int nivel,int especial,int bajo,int medio,int alto,int traicion,int velocidad) {
+        this.stockAtaqueAlto=alto;
+        this.stockAtaqueMedio=medio;
+        this.stockAtaqueBajo=bajo;
+        this.stockAtaqueEspecial= especial;
+        this.nivel=nivel;
         this.puntosAtaqueCortos=ataqueCorto;
         this.puntoDefensa=defensa;
         this.puntosVida=vida;
-        this.nombrePersonaje=nombre;
-        this.tipo = tipo;
-        this.rol = rol;
-        this.dueñoPersonaje = dueñoPersonaje;
-        
+        this.nombrePersonaje=nombrePersonaje;
+        this.tipo = tipoPersonaje;
+        this.rol = rolPersonaje;
+        this.dueñoPersonaje = tipoJugador;
+        this.estadoPersonaje = estadoPersonaje;
+        this.ataqueLargo = ataqueLargo;
+        this.puntoMovimiento = movimiento;
+        this.traicion = traicion;
+        this.velocidad = velocidad;
         }
 
 
@@ -77,17 +87,15 @@ public class Personaje {
         this.stockAtaqueEspecial=i;
     }
     
-    public Personaje (int i, int j, int ataqueCorto, int defensa, int vida) {
-        this.stockAtaqueAlto=i;
-        this.stockAtaqueMedio=i;
-        this.stockAtaqueBajo=i;
-        this.stockAtaqueEspecial=i;
-        this.nivel=j;
-        this.puntosAtaqueCortos=ataqueCorto;
-        this.puntoDefensa=defensa;
-        this.puntosVida=vida;
+   
+    
+    public int getVelocidad() {
+        return velocidad;
     }
 
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
     
     public int getPuntoMovimiento() {
         return puntoMovimiento;
@@ -183,6 +191,8 @@ public class Personaje {
     
    
    //
+   
+   
    public boolean aplicarDaño(int daño, int vida){
        int nuevaVida=vida-daño;
        if(nuevaVida<0){

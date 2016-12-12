@@ -29,7 +29,7 @@ public class ControladorMenuPrincipal implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(vMenuP.getBotonBatalla() == (JButton)ae.getSource()){
-            ControladorPreBatalla cB = new ControladorPreBatalla();
+            ControladorPlanComun comun = new ControladorPlanComun();
             ActividadUsuario.actividadUsuario("Usuario ingresa a una batalla");
             vMenuP.setVisible(false);
         }            

@@ -37,18 +37,22 @@ public class ControladorBatalla implements MouseListener {
     private int x;
     private int y;
     private String nombre;
+    private int turno = 0;
     
-    ControladorBatalla() {
+   public ControladorBatalla(ArrayList<Personaje> usuario) {
         vb = new VistaBatalla();
         vb.agregarListener(this);
         vb.setVisible(true);
-        batalla = new Batalla();
+        batalla = new Batalla(usuario);
         tipoEsc = new TipoDeEscenario();
         personaje = new Personaje();
         batalla.getEscenario().asignarAlturasModuloBasico();
-        batalla.getEscenario().posicionarPersonaje(batalla.getPersonajesVivosJugador());
+        batalla.getEscenario().posicionarPersonajeUsuario(batalla.getEquipoUsuario());
+        batalla.getEscenario().posicionarPersonajeCpu(batalla.getEquipoCPU());
+        batalla.agregarListasVelocidades();
         dibujarEscenario();
         vb.desactivarTablero();
+       
     }
     
     
@@ -61,9 +65,13 @@ public class ControladorBatalla implements MouseListener {
                 if(batalla.getEscenario().getMatrizCoordenada()[i][j].getTipoEscenario().getMatrizTerreno()[i][j] == "rio"){
                     vb.marcarRio(i, j);
                     }
-                if(batalla.getEscenario().getMatrizCoordenada()[i][j].getPersonaje().getNombrePersonaje() != null){
+                if(batalla.getEscenario().getMatrizCoordenada()[i][j].getPersonaje().getDueñoPersonaje() == "usuario"){
                     vb.marcarPosicion(i, j);
                 }
+                if(batalla.getEscenario().getMatrizCoordenada()[i][j].getPersonaje().getDueñoPersonaje() == "cpu"){
+                    vb.marcarCpu(i, j);
+                }
+               
             } 
         }
     }
@@ -72,8 +80,9 @@ public class ControladorBatalla implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent ae) {
+       
         
-           if(vb.getAtaqueC() == (JButton)ae.getSource()){
+         if(vb.getAtaqueC() == (JButton)ae.getSource()){
             ControladorCombateCorto corto = new ControladorCombateCorto();
             ActividadUsuario.actividadUsuario("Usuario realiza ataque a corta distancia con " + personaje.getNombrePersonaje());
             vb.desactivarBotonAtaqueCorto();
@@ -84,41 +93,55 @@ public class ControladorBatalla implements MouseListener {
          }
         
         if(vb.getPasar() == (JButton)ae.getSource()){
+            vb.getAtaqueL().setEnabled(true);
+            vb.getMover().setEnabled(true);
+            turno = turno + 1;
+            System.out.println("turno :" + turno);
             vb.desactivarTablero();
         }
         
         if(vb.getMover() == (JButton)ae.getSource()){
             vb.activarTablero();
+            vb.getMover().setEnabled(false);
             boton = 1;
         }
         
         if(vb.getAtaqueL() == (JButton)ae.getSource()){
             vb.activarTablero();
+            vb.getAtaqueL().setEnabled(false);
             boton = 2;
         }
             
 
         for(int i = 0; i<25; i++){
             for(int j=0; j<25; j++){
-                if(batalla.getEscenario().getMatrizCoordenada()[i][j].getPersonaje().getNombrePersonaje() == "1" ){
-                   nombre = "1";
+                if(batalla.pasarTurno(turno)){
+                    nombre = batalla.getListaOrdenada().get(turno).getNombrePersonaje();
+                    
+                  
+                }
+                 if(batalla.getEscenario().getMatrizCoordenada()[i][j].getPersonaje().getNombrePersonaje() == nombre ){
                    vb.getCasillas()[i][j].setBackground(Color.CYAN);
                     x = i;
                     y = j;
                    
                 }
+                
                 if(boton == 1){
                     if(vb.getCasillas()[i][j]==(JButton)ae.getSource()){
-                        if(personaje.getPuntoMovimiento()>0){
+                        if(batalla.getEscenario().getMatrizCoordenada()[x][y].getPersonaje().getPuntoMovimiento()>0){
+                            int movimiento = batalla.getEscenario().getMatrizCoordenada()[x][y].getPersonaje().getPuntoMovimiento();
                             if(batalla.getEscenario().verificarPosicionLibre(i, j)){
                                 if(batalla.getEscenario().moverDiferenciaAltura(i, j,x,y) ){
                                     if(batalla.getEscenario().getMatrizCoordenada()[i][j].getTipoEscenario().getMatrizTerreno()[i][j] != "rio"){
-                                        if(batalla.getEscenario().moverCasilla(i, j,x,y,nombre)){                                    
-                                            batalla.getEscenario().getMatrizCoordenada()[x][y].getPersonaje().setNombrePersonaje(null);
+                                        if(batalla.getEscenario().moverCasilla(i, j,x,y,nombre)){                                   
                                             vb.pintarAlturas(x,y, batalla.getEscenario().getMatrizCoordenada()[x][y].getAltura());
-                                            batalla.getEscenario().getMatrizCoordenada()[i][j].setPersonaje(nombre);
+                                            batalla.getEscenario().getMatrizCoordenada()[i][j].setPersonaje(batalla.getEscenario().getMatrizCoordenada()[x][y].getPersonaje());
                                             vb.marcarPosicion(i, j);
-                                            personaje.setPuntoMovimiento(personaje.getPuntoMovimiento()-1);
+                                            batalla.getEscenario().getMatrizCoordenada()[i][j].getPersonaje().setPuntoMovimiento(movimiento - 1);
+                                            batalla.getEscenario().getMatrizCoordenada()[x][y].setPersonaje(personaje = new Personaje(null));
+                                            x = i;
+                                            y = j;
                                         }
                                     }
                                 }
@@ -131,6 +154,9 @@ public class ControladorBatalla implements MouseListener {
                     if(vb.getCasillas()[i][j] == (JButton)ae.getSource()){
                         if(batalla.calcularDistanciaAtaque(i, j, x, y)){
                             if(batalla.casillaDesocupada(i, j)){
+                                batalla.atacarOponente(i, j, x, y);
+                                System.out.println(batalla.getEscenario().getMatrizCoordenada()[i][j].getPersonaje().getPuntosVida());
+                                 System.out.println(batalla.getEscenario().getMatrizCoordenada()[x][y].getPersonaje().getPuntosVida());
                                 System.out.println("atacar");
                             }
                             
