@@ -38,6 +38,7 @@ public class ControladorBatalla implements MouseListener {
     private int y;
     private String nombre;
     private int turno = 0;
+    private String dueño;
     
    public ControladorBatalla(ArrayList<Personaje> usuario) {
         vb = new VistaBatalla();
@@ -112,20 +113,31 @@ public class ControladorBatalla implements MouseListener {
             boton = 2;
         }
             
-
+       if(batalla.pasarTurno(turno)){
+            nombre = batalla.getListaOrdenada().get(turno).getNombrePersonaje();
+            dueño = batalla.getListaOrdenada().get(turno).getDueñoPersonaje();
+            System.out.println(nombre);
+ 
+           }
+        
+       
         for(int i = 0; i<25; i++){
             for(int j=0; j<25; j++){
-                if(batalla.pasarTurno(turno)){
-                    nombre = batalla.getListaOrdenada().get(turno).getNombrePersonaje();
-                    
-                  
-                }
-                 if(batalla.getEscenario().getMatrizCoordenada()[i][j].getPersonaje().getNombrePersonaje() == nombre ){
+                  if(batalla.getEscenario().getMatrizCoordenada()[i][j].getPersonaje().getNombrePersonaje() == nombre ){
                    vb.getCasillas()[i][j].setBackground(Color.CYAN);
                     x = i;
                     y = j;
                    
                 }
+                  
+//                  if(batalla.moverCpu(dueño)){
+//                    for (int k = 0; k < batalla.getCpu().obtenerCamino(batalla.listaPosicionCpu(x, y), batalla.buscarObjetivo(),batalla.getEscenario()).size(); k++) { 
+//                        
+//                    }
+//                }
+                
+               
+               
                 
                 if(boton == 1){
                     if(vb.getCasillas()[i][j]==(JButton)ae.getSource()){

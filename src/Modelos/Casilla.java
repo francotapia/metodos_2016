@@ -35,6 +35,10 @@ public class Casilla {
        
        //this.tipoCasilla = casilla;
    }
+
+    Casilla() {
+       
+    }
    
 
     //Métodos get y set

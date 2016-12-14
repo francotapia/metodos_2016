@@ -41,16 +41,52 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 48)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Old English Text MT", 0, 48)); // NOI18N
         jLabel1.setText("Menú Principal");
 
+        botonBatalla.setBackground(new java.awt.Color(0, 0, 0));
+        botonBatalla.setFont(new java.awt.Font("Old English Text MT", 0, 18)); // NOI18N
+        botonBatalla.setForeground(new java.awt.Color(255, 0, 0));
+        botonBatalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/battle-for-wesnoth-icono-6321-128.png"))); // NOI18N
         botonBatalla.setText("Batalla");
+        botonBatalla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonBatalla.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonBatalla.setIconTextGap(-3);
+        botonBatalla.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        botonBatalla.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        botonBiblioteca.setFont(new java.awt.Font("Old English Text MT", 0, 18)); // NOI18N
+        botonBiblioteca.setForeground(new java.awt.Color(0, 204, 51));
+        botonBiblioteca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/libros-en-una-biblioteca_318-62582.jpg"))); // NOI18N
         botonBiblioteca.setText("Biblioteca Central");
+        botonBiblioteca.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonBiblioteca.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        botonBiblioteca.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        botonInventario.setFont(new java.awt.Font("Old English Text MT", 0, 18)); // NOI18N
+        botonInventario.setForeground(new java.awt.Color(255, 51, 102));
+        botonInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/16656.png"))); // NOI18N
         botonInventario.setText("Inventario");
+        botonInventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonInventario.setIconTextGap(-3);
+        botonInventario.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        botonInventario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        botonForo.setFont(new java.awt.Font("Old English Text MT", 0, 18)); // NOI18N
+        botonForo.setForeground(new java.awt.Color(255, 153, 0));
+        botonForo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/17887322-Contrato-sobre-un-fondo-blanco-Ilustraci-n-Foto-de-archivo.jpg"))); // NOI18N
         botonForo.setText("Foro Griego");
+        botonForo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonForo.setIconTextGap(-3);
+        botonForo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        botonForo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonForo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonForoActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Volver");
 
@@ -59,37 +95,45 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(94, 94, 94)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(botonBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(botonBiblioteca))
+                            .addGap(235, 235, 235)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(botonInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(botonForo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(9, 9, 9))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jButton5)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonBatalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonBiblioteca, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
-                        .addGap(139, 139, 139)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonForo, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))))
-                .addContainerGap(184, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton5))
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel1)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(109, 109, 109)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonForo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(botonForo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(jButton5)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(botonBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,20 +141,23 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(95, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonForoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonForoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonForoActionPerformed
 
     /**
      * @param args the command line arguments

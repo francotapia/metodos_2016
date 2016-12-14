@@ -44,6 +44,9 @@ public class ControladorMenuPrincipal implements ActionListener {
            ActividadUsuario.actividadUsuario("Usuario ingresa al Foro griego");
            vMenuP.setVisible(false);
        }
+       if(vMenuP.getBotonInventario() == (JButton)ae.getSource()){
+           ControladorInventario cmi = new ControladorInventario();
+            vMenuP.setVisible(false);
+        }
     }
-    
 }

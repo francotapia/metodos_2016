@@ -21,7 +21,7 @@ public class Cpu extends Jugador {
      private Casilla casilla;
  
    public Cpu(){
-       escenario = new Escenario();
+       casilla = new Casilla();
        equipo = new ArrayList<>();
        Personaje personaje1 = new Personaje("canito","cpu","compañero","arquero","alumno",100,100,100,100,5,1,1,3,3,3,0,4);
        Personaje personaje2 = new Personaje("pablo","cpu","ayudante","guerrero","alumno",100,100,100,100,5,1,1,3,3,3,50,8);
@@ -43,7 +43,7 @@ public class Cpu extends Jugador {
         return equipo;
     }
     
-   public ArrayList<int[]> obtenerCamino(int[] posicion, int[] posicionEnemigo){
+   public ArrayList<int[]> obtenerCamino(int[] posicion, int[] posicionEnemigo,Escenario escenario){
     ArrayList<int[]> listaMovimientos = new ArrayList<>(); //Lista final a la que se le agregaran los movimientos correctos.
     ArrayList<ArrayList<int[]>> listaTransicional = new ArrayList<>(); //Lista que contiene las posiciones obtenidas alrededor de cualquier casilla analizada.
 	//Al final se hace un ciclo para tomar el camino correcto de todos los pares de coordenadas que se encuentren en esta lista y se agregaran a la lista movimientos.
@@ -78,7 +78,7 @@ public class Cpu extends Jugador {
 			posicionActual[1]=posicionAnterior[1]-1;
 			////REVISAR SI SE PUEDE DE ACUERDO A ALTURA O TERRENO, lo siguiente ocurre solo si la posicion es valida.
 			//Se agregan las coordenadas en el orden establecido a las coordenadasTransicionales que se vacio previamente.
-			if ((escenario.getCasillaDeMatriz(posicionActual).getAltura()-escenario.getCasillaDeMatriz(posicionAnterior).getAltura())<=2 && escenario.getCasillaDeMatriz(posicionActual).getTipoEscenario().getCasillaDeEscenario(posicionActual)!="rio"){
+			if ((escenario.getMatrizCoordenada()[posicionActual[0]][posicionActual[1]].getAltura()-escenario.getMatrizCoordenada()[posicionAnterior[0]][posicionAnterior[1]].getAltura())<=2 && escenario.getMatrizCoordenada()[posicionActual[0]][posicionActual[1]].getTipoEscenario().getMatrizTerreno()[posicionActual[0]][posicionActual[1]]!="rio"){
 				coordenadasTransicionales.add(posicionAnterior);
 				coordenadasTransicionales.add(posicionActual);
 				//Se agrega el par de coordenadas a la lista transicional.
@@ -92,7 +92,7 @@ public class Cpu extends Jugador {
 			posicionActual[0]=posicionAnterior[0]+1;
 			posicionActual[1]=posicionAnterior[1];			
 			////REVISAR SI SE PUEDE DE ACUERDO A ALTURA O TERRENO, lo siguiente ocurre solo si la posicion es valida.
-			if ((escenario.getCasillaDeMatriz(posicionActual).getAltura()-escenario.getCasillaDeMatriz(posicionAnterior).getAltura())<=2 && escenario.getCasillaDeMatriz(posicionActual).getTipoEscenario().getCasillaDeEscenario(posicionActual)!="rio"){
+			if ((escenario.getMatrizCoordenada()[posicionActual[0]][posicionActual[1]].getAltura()-escenario.getMatrizCoordenada()[posicionAnterior[0]][posicionAnterior[1]].getAltura())<=2 && escenario.getMatrizCoordenada()[posicionActual[0]][posicionActual[1]].getTipoEscenario().getMatrizTerreno()[posicionActual[0]][posicionActual[1]]!="rio"){
 				coordenadasTransicionales.add(posicionAnterior);
 				coordenadasTransicionales.add(posicionActual);
 				listaTransicional.add(coordenadasTransicionales);
@@ -105,7 +105,7 @@ public class Cpu extends Jugador {
 			posicionActual[0]=posicionAnterior[0];
 			posicionActual[1]=posicionAnterior[1]+1;
 			////REVISAR SI SE PUEDE DE ACUERDO A ALTURA O TERRENO, lo siguiente ocurre solo si la posicion es valida.
-			if ((escenario.getCasillaDeMatriz(posicionActual).getAltura()-escenario.getCasillaDeMatriz(posicionAnterior).getAltura())<=2 && escenario.getCasillaDeMatriz(posicionActual).getTipoEscenario().getCasillaDeEscenario(posicionActual)!="rio"){
+			if ((escenario.getMatrizCoordenada()[posicionActual[0]][posicionActual[1]].getAltura()-escenario.getMatrizCoordenada()[posicionAnterior[0]][posicionAnterior[1]].getAltura())<=2 && escenario.getMatrizCoordenada()[posicionActual[0]][posicionActual[1]].getTipoEscenario().getMatrizTerreno()[posicionActual[0]][posicionActual[1]]!="rio"){
 				coordenadasTransicionales.add(posicionAnterior);
 				coordenadasTransicionales.add(posicionActual);
 				listaTransicional.add(coordenadasTransicionales);
@@ -118,7 +118,7 @@ public class Cpu extends Jugador {
 			posicionActual[0]=posicionAnterior[0]-1;
 			posicionActual[1]=posicionAnterior[1];
 			////REVISAR SI SE PUEDE DE ACUERDO A ALTURA O TERRENO, lo siguiente ocurre solo si la posicion es valida.
-			if ((escenario.getCasillaDeMatriz(posicionActual).getAltura()-escenario.getCasillaDeMatriz(posicionAnterior).getAltura())<=2 && escenario.getCasillaDeMatriz(posicionActual).getTipoEscenario().getCasillaDeEscenario(posicionActual)!="rio"){
+			if ((escenario.getMatrizCoordenada()[posicionActual[0]][posicionActual[1]].getAltura()-escenario.getMatrizCoordenada()[posicionAnterior[0]][posicionAnterior[1]].getAltura())<=2 && escenario.getMatrizCoordenada()[posicionActual[0]][posicionActual[1]].getTipoEscenario().getMatrizTerreno()[posicionActual[0]][posicionActual[1]]!="rio"){
 				coordenadasTransicionales.add(posicionAnterior);
 				coordenadasTransicionales.add(posicionActual);
 				listaTransicional.add(coordenadasTransicionales);

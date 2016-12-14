@@ -34,13 +34,13 @@ public class VistaBibliotecaCentral extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        IniciarGato = new javax.swing.JButton();
         IniciarAhorcado = new javax.swing.JButton();
         IniciarBuscaminas = new javax.swing.JButton();
         IniciarAdivina = new javax.swing.JButton();
         IniciarPix = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
+        IniciarGato = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -55,49 +55,94 @@ public class VistaBibliotecaCentral extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setForeground(new java.awt.Color(0, 102, 0));
+
+        jLabel1.setFont(new java.awt.Font("Monotype Corsiva", 2, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 255));
         jLabel1.setText("Biblioteca Central");
 
-        IniciarGato.setText("Tres en raya");
-
+        IniciarAhorcado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/muñeco-ahorcado.png"))); // NOI18N
         IniciarAhorcado.setText("Ahorcado");
+        IniciarAhorcado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        IniciarAhorcado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        IniciarAhorcado.setIconTextGap(-3);
+        IniciarAhorcado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        IniciarAhorcado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        IniciarBuscaminas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/18140.png"))); // NOI18N
         IniciarBuscaminas.setText("Buscaminas");
+        IniciarBuscaminas.setBorder(null);
+        IniciarBuscaminas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        IniciarBuscaminas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        IniciarBuscaminas.setIconTextGap(-3);
+        IniciarBuscaminas.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        IniciarBuscaminas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        IniciarAdivina.setBackground(new java.awt.Color(255, 0, 51));
+        IniciarAdivina.setForeground(new java.awt.Color(204, 0, 51));
+        IniciarAdivina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/apps.24001.9007199266248640.909aeb1a-da98-4410-afec-bdf5f8070f4f.png"))); // NOI18N
         IniciarAdivina.setText("Adivina la palabra");
+        IniciarAdivina.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
+        IniciarAdivina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        IniciarAdivina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        IniciarAdivina.setIconTextGap(-3);
+        IniciarAdivina.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        IniciarAdivina.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        IniciarAdivina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IniciarAdivinaActionPerformed(evt);
+            }
+        });
 
+        IniciarPix.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/picapix.gif"))); // NOI18N
         IniciarPix.setText("Pix and Pix");
+        IniciarPix.setBorder(null);
+        IniciarPix.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        IniciarPix.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        IniciarPix.setIconTextGap(-3);
+        IniciarPix.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        IniciarPix.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         Salir.setText("Salir");
 
         Atras.setText("Atras");
+
+        IniciarGato.setText("IniciarGato");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(IniciarGato)
-                        .addGap(53, 53, 53)
-                        .addComponent(IniciarAhorcado)
-                        .addGap(52, 52, 52)
-                        .addComponent(IniciarBuscaminas)
-                        .addGap(55, 55, 55)
-                        .addComponent(IniciarAdivina))
+                        .addGap(233, 233, 233)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(296, 296, 296)
+                        .addGap(37, 37, 37)
+                        .addComponent(IniciarGato, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
-                                .addComponent(Salir))
-                            .addComponent(IniciarPix))))
-                .addContainerGap())
+                                .addGap(30, 30, 30)
+                                .addComponent(IniciarAhorcado, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(IniciarBuscaminas, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Salir, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(IniciarAdivina, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Atras)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Atras))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(IniciarPix, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -107,15 +152,15 @@ public class VistaBibliotecaCentral extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Salir))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(IniciarGato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(IniciarAdivina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(IniciarAhorcado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(IniciarBuscaminas, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IniciarGato)
-                    .addComponent(IniciarAhorcado)
-                    .addComponent(IniciarBuscaminas)
-                    .addComponent(IniciarAdivina))
-                .addGap(100, 100, 100)
-                .addComponent(IniciarPix)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addComponent(IniciarPix, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(Atras)
                 .addContainerGap())
         );
@@ -133,6 +178,10 @@ public class VistaBibliotecaCentral extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void IniciarAdivinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarAdivinaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IniciarAdivinaActionPerformed
 
     /**
      * @param args the command line arguments

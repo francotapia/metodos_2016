@@ -70,8 +70,10 @@ public class VistaPreBatalla extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listaPersonajesDisponibles);
 
+        labelPersonajesDisponibles.setFont(new java.awt.Font("SimSun-ExtB", 0, 14)); // NOI18N
         labelPersonajesDisponibles.setText("Personajes disponibles:");
 
+        labelPersonajesSeleccionados.setFont(new java.awt.Font("SimSun-ExtB", 0, 14)); // NOI18N
         labelPersonajesSeleccionados.setText("Personajes seleccionados:");
 
         listaPersonajesSeleccionados.setModel(new javax.swing.AbstractListModel<String>() {
@@ -82,6 +84,7 @@ public class VistaPreBatalla extends javax.swing.JFrame {
         listaPersonajesSeleccionados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(listaPersonajesSeleccionados);
 
+        botonQuitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/531971df5f9c98a719e8a830bffbe506.png"))); // NOI18N
         botonQuitar.setText("Quitar");
         botonQuitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,8 +94,10 @@ public class VistaPreBatalla extends javax.swing.JFrame {
 
         labelAtaque.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        labelInformacionPersonajeFijo.setFont(new java.awt.Font("SimSun-ExtB", 0, 14)); // NOI18N
         labelInformacionPersonajeFijo.setText("Informacion:");
 
+        botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mas.jpg"))); // NOI18N
         botonAgregar.setText("Agregar");
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +105,11 @@ public class VistaPreBatalla extends javax.swing.JFrame {
             }
         });
 
+        botonIniciarBatalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/battle-for-wesnoth-icono-6321-128.png"))); // NOI18N
         botonIniciarBatalla.setText("Iniciar Batalla");
+        botonIniciarBatalla.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonIniciarBatalla.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        botonIniciarBatalla.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonIniciarBatalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonIniciarBatallaActionPerformed(evt);
@@ -132,7 +141,7 @@ public class VistaPreBatalla extends javax.swing.JFrame {
                     .addComponent(labelDefensa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelVida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelNivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonIniciarBatalla, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                    .addComponent(botonIniciarBatalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
@@ -153,19 +162,22 @@ public class VistaPreBatalla extends javax.swing.JFrame {
                         .addComponent(labelVida, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(labelNivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
                     .addComponent(jScrollPane1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(botonQuitar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(botonAgregar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonIniciarBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonObtenerInformacion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(botonQuitar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(botonAgregar)))
+                        .addGap(19, 19, 19)
+                        .addComponent(botonObtenerInformacion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonIniciarBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
         );
 

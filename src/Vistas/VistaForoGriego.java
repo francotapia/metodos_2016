@@ -31,6 +31,8 @@ public class VistaForoGriego extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -53,6 +55,10 @@ public class VistaForoGriego extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         botonAtras = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,20 +101,30 @@ public class VistaForoGriego extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jLabel1.setFont(new java.awt.Font("Old English Text MT", 0, 14)); // NOI18N
         jLabel1.setText("Profesores");
 
+        jLabel2.setFont(new java.awt.Font("Old English Text MT", 0, 14)); // NOI18N
         jLabel2.setText("Ayudantes");
 
+        jLabel3.setFont(new java.awt.Font("Old English Text MT", 0, 14)); // NOI18N
         jLabel3.setText("Alumnos");
 
+        jLabel4.setFont(new java.awt.Font("Old English Text MT", 0, 24)); // NOI18N
         jLabel4.setText("Foro Griego");
 
         areaTextoDinero.setEditable(false);
         areaTextoDinero.setText("$$");
 
+        jLabel5.setFont(new java.awt.Font("Old English Text MT", 0, 14)); // NOI18N
         jLabel5.setText("Dinero");
 
+        botonContratar.setFont(new java.awt.Font("Old English Text MT", 0, 14)); // NOI18N
+        botonContratar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/17887322-Contrato-sobre-un-fondo-blanco-Ilustraci-n-Foto-de-archivo.jpg"))); // NOI18N
         botonContratar.setText("Contratar");
+        botonContratar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonContratar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        botonContratar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jPanel4.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -123,8 +139,14 @@ public class VistaForoGriego extends javax.swing.JFrame {
             .addGap(0, 213, Short.MAX_VALUE)
         );
 
+        botonEliminar.setFont(new java.awt.Font("Old English Text MT", 0, 14)); // NOI18N
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/531971df5f9c98a719e8a830bffbe506.png"))); // NOI18N
         botonEliminar.setText("Eliminar");
+        botonEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonEliminar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        botonEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jLabel6.setFont(new java.awt.Font("Old English Text MT", 0, 18)); // NOI18N
         jLabel6.setText("Equipo");
 
         textoPj1.setText("pj1");
@@ -182,7 +204,7 @@ public class VistaForoGriego extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(141, 141, 141)
                                 .addComponent(textoPj1)
-                                .addGap(0, 33, Short.MAX_VALUE))))
+                                .addGap(0, 53, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -212,7 +234,7 @@ public class VistaForoGriego extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,6 +334,8 @@ public class VistaForoGriego extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel textoPj1;
     private javax.swing.JLabel textoPj2;
     private javax.swing.JLabel textoPj3;
